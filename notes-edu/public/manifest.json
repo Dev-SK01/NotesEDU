@@ -1,0 +1,25 @@
+{
+  "short_name": "Notes EDU",
+  "name": "Notes Edu By WebMa ❤️",
+  "icons": [
+    {
+      "src": "notes-edu.png",
+      "sizes": "64x64 32x32 24x24 16x16 512x512",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "notes-edu.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "notes-edu.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

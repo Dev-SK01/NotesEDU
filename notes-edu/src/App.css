@@ -1,0 +1,285 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Rubik+Glitch&display=swap');
+
+.App {
+  text-align: center;
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.header h1 {
+  width: 50%;
+  margin-block: .5rem;
+  border-radius: 15px;
+  /* background: #e0e0e0;
+  box-shadow: -16px 16px 32px #dcdcdc,
+    16px -16px 32px #e4e4e4; */
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  color: blue;
+  font-family: 'Playfair Display';
+
+}
+
+.List-form {
+  background-color: rgb(27, 91, 148);
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+  position: relative;
+  background: #e0e0e0;
+  /* box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff; */
+    background: #e0e0e0;
+    box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.List-form input[type=text] {
+  border: none;
+  text-decoration: none;
+  padding-inline: 1rem;
+  padding-block: .6rem;
+  width: 90%;
+  border-radius: 10px;
+  font-weight: bolder;
+  color: rgb(12, 12, 12);
+  font-size: 1rem;
+}
+
+.List-form input::placeholder {
+  font-weight: bolder;
+  color: rgb(12, 12, 12);
+  opacity: .7;
+  font-size: 1rem;
+}
+
+.List-form .add-btn {
+  border: none;
+  background: transparent;
+  position: absolute;
+  /* top: 0;
+  bottom: 0;
+  right: 1.5rem; */
+}
+
+.add-btn i {
+  background-color: rgb(4, 168, 4);
+  padding-inline: .5rem;
+  border-radius: 6px;
+  border: 1px solid black;
+  color: rgb(0, 0, 0);
+  font-size: 1.8rem;
+
+}
+.welcome-text{
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: 'Playfair Display';
+  position: absolute;
+  top: 40%;
+  left: .5rem;
+}
+.welcome-text p{
+  margin-bottom: 0 !important;
+}
+.welcome-img{
+  background-image: url('./time-flies-bro.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+}
+.welcome-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.welcome-icon{
+  position: absolute;
+  top: 40%;
+  right: .5rem;
+}
+.welcome-icon p{
+  font-family: 'Playfair Display';
+  font-size: 1.5rem;
+}
+.welcome-text i{
+  font-size:1.4rem;
+  margin-top: -10px;
+  color:blue;
+}
+
+.form-switch .form-check-input {
+  border: 1px solid black !important;
+  margin-top: .45rem !important;
+  margin-left: -2rem !important;
+}
+
+.empty-list {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.empty-list i {
+  font-size: 5rem;
+  color: rgb(22, 22, 22);
+  animation: 2s App-logo-spin infinite;
+  color: blue;
+}
+
+.empty-list p {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: blue;
+  font-family:'Playfair Display' ;
+
+
+}
+
+.list-div {
+  margin-top:0rem;
+  background: #e0e0e0;
+  /* box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff; */
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1),
+   0px 4px 18px 0px rgba(0,0,0,0.1);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  min-height: 50vh;
+  margin-inline: 10px;
+
+}
+
+.list-div ul {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0px 10px 0 10px !important;
+  
+}
+
+.list-div li {
+  text-decoration: none;
+  background-color:rgb(197, 255, 197);
+  list-style: none;
+  margin-bottom: .5rem;
+  border-radius: 5px;
+  min-height: 2rem;
+  overflow-x: auto;
+}
+
+.item-data {
+  font-weight: bolder !important;
+  font-size: 1rem;
+  font-weight: 5000;
+  position: absolute;
+  left: 4rem;
+  margin-top: .3rem;
+  font-family:'Playfair Display' ;
+}
+
+.list-btn {
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 1rem;
+}
+
+.list-btn i {
+  font-size: 1.35rem;
+  color:rgb(255, 72, 72);
+}
+
+.list-btn i:hover {
+  color: black;
+  font-size: 1.5rem;
+}
+
+.footer {
+  border-radius: 10px;
+  margin-top: 2rem;
+  position: absolute;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1),
+  0px 4px 18px 0px rgba(0,0,0,0.1);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.footer i {
+  font-size: 2.3rem;
+  
+}
+
+.footer p {
+  font-size: 1.5rem;
+  margin-left: 4.6rem;
+  font-weight: bolder;
+  color: blue;
+  text-align: center;
+  /* background: #e0e0e0;
+  box-shadow: -20px -20px 60px #bebebe,
+    20px 20px 60px #ffffff; */
+  font-family: 'Playfair Display';
+   
+  margin-bottom: 0;
+}
+
+.footer-img{
+  background-image: url('./footer-img.svg');
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  z-index: 1;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
