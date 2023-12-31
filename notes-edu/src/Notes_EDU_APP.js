@@ -1,19 +1,19 @@
-import React, { useState , useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { List_Keys } from './List_Keys';
 import './App.css'
 import { Footer } from './Footer';
 
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
 
+
+
 // -------------------------------------------------------
 
 function Notes_EDU_APP() {
 
-
-    // Use Ref
-    const backToInput = useRef();
+    const backToInput = useRef()
     // list and keys Use State
-    const [itemobj, setItem] = useState( ParsedLocalList || [])
+    const [itemobj, setItem] = useState(ParsedLocalList || [])
 
     function handlechange(id) {
         const list_item = itemobj.map((item) => (
@@ -62,10 +62,9 @@ function Notes_EDU_APP() {
                 <form className='List-form' onSubmit={handleListSubmit}>
                     {/* Input Field to get the list */}
                     <input
-                        autoFocus
-                        ref={backToInput}
                         type="text"
                         id='list-input'
+                        ref={backToInput}
                         placeholder='Enter Your List To Add'
                         required
                         value={listItem}
@@ -73,20 +72,28 @@ function Notes_EDU_APP() {
                         className='input'
                     />
                     <button
-                        type='submit' 
+                        type='submit'
                         className='add-btn'
-                        onClick={() => {backToInput.current.focus()}}
+                        onChange={() => (backToInput.current.focus())}
                     >
                         <i className="bi bi-check2-circle"></i>
                     </button>
                 </form>
 
                 <div className="welcome-div">
+                    {/* celebration div */}
+                    <div className="celebration" id='celebration'
+                        style={((itemobj.map((item)=>(item.checked))) ? 
+                            { display: "block" } : 
+                            { display: "none" })}
+                    >
+
+                    </div>
                     <div className="welcome-text">
-                        <p>Hello<i className="bi bi-cloud-moon-fill"></i></p>
+                        <p>Hello👋</p>
                     </div>
                     <div className="welcome-icon">
-                     <p>Buddy</p>
+                        <p>Buddy,</p>
                     </div>
                     <div className="welcome-img">
                     </div>
@@ -94,7 +101,10 @@ function Notes_EDU_APP() {
 
 
             </>
+
         )
+
+
     }
 
 
@@ -110,18 +120,24 @@ function Notes_EDU_APP() {
                     ItemObj={itemobj}
                     handleDelete={handleDelete}
                     handlechange={handlechange}
-                    
+
                 />
 
             </section>
 
-            <Footer 
-            react=" You Have " 
-            length={itemobj.length} 
+
+            <Footer
+                react=" You Have "
+                length={itemobj.length}
             />
 
         </>
     )
+
 }
+
+
+
+
 
 export { Notes_EDU_APP };

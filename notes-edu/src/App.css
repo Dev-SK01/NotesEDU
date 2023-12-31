@@ -6,7 +6,6 @@
 }
 
 
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -94,7 +93,7 @@
 
 }
 .welcome-text{
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 500;
   font-family: 'Playfair Display';
   position: absolute;
@@ -122,14 +121,14 @@
 .welcome-icon{
   position: absolute;
   top: 40%;
-  right: .5rem;
+  right: 1rem;
 }
 .welcome-icon p{
   font-family: 'Playfair Display';
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .welcome-text i{
-  font-size:1.4rem;
+  font-size:2rem;
   margin-top: -10px;
   color:blue;
 }
@@ -215,6 +214,21 @@
   margin-top: .3rem;
   font-family:'Playfair Display' ;
 }
+.completed{
+  position: absolute;
+  transform: rotate(100deg);
+  font-size: 1.2rem;
+  left: -.5%;
+  margin-top: -3.5%;
+}
+
+.celebration{
+ height:150px;
+ width: 100%;
+ background-image: url('https://i.gifer.com/origin/1a/1af8d3b487b77085d5288814f151e1de_w200.gif');
+ position: absolute;
+ top: 10%;
+}
 
 .list-btn {
   border: none;
@@ -258,11 +272,7 @@
   font-weight: bolder;
   color: blue;
   text-align: center;
-  /* background: #e0e0e0;
-  box-shadow: -20px -20px 60px #bebebe,
-    20px 20px 60px #ffffff; */
   font-family: 'Playfair Display';
-   
   margin-bottom: 0;
 }
 
