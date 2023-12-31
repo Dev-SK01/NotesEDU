@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/NotedEDU/static/css/main.a9343b7a.css",
+    "main.js": "/NotedEDU/static/js/main.55b27b21.js",
+    "static/media/footer-img.svg": "/NotedEDU/static/media/footer-img.481082fae67d7e02a004.svg",
+    "static/media/time-flies-bro.svg": "/NotedEDU/static/media/time-flies-bro.70ad785af8e004a7f491.svg",
+    "index.html": "/NotedEDU/index.html",
+    "main.a9343b7a.css.map": "/NotedEDU/static/css/main.a9343b7a.css.map",
+    "main.55b27b21.js.map": "/NotedEDU/static/js/main.55b27b21.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9343b7a.css",
+    "static/js/main.55b27b21.js"
+  ]
+}
