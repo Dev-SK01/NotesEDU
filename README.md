@@ -1,5 +1,5 @@
 
-# Notes EDU
+# Notes EDU V1.0.1
 
 - It Realtime Simple Task Noting Application. 
 - This Application Help Me to Note My Day Task To complete.
