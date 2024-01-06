@@ -4,33 +4,30 @@ import './App.css'
 import { Footer } from './Footer';
 
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
-// resetting and counting the completed and added data
+/*           Reset and completion count functionality  */
 const hours = new Date().getHours();
+console.log(hours);
+if (hours == 23) {
 
-  if(hours == 24){
-
- const NewData =  ParsedLocalList.map((item) => {
+    const ModifiedList = ParsedLocalList.map((item) => {
         if (item.checked == false) {
             item.UnDone = item.UnDone + 1;
-        }else{
+        } else {
             item.Done = item.Done + 1;
         }
         item.checked = false;
         console.log(item);
-        let newList = [];
-        newList.push(item)
+        return item
 
-        return newList
     })
-localStorage.setItem('ListData' , JSON.stringify(NewData));
-
-  }
+    localStorage.setItem('ListData', JSON.stringify(ModifiedList));
+}
 
 
 // -------------------------------------------------------
 
 function Notes_EDU_APP() {
-  
+
 
     const backToInput = useRef()
     // list and keys Use State
