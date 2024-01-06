@@ -1,15 +1,36 @@
 import React, { useRef, useState } from 'react'
-import { List_Keys } from './List_Keys';
+import { ListItem } from './List_Item';
 import './App.css'
 import { Footer } from './Footer';
 
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
+// resetting and counting the completed and added data
+const hours = new Date().getHours();
 
+  if(hours == 24){
+
+ const NewData =  ParsedLocalList.map((item) => {
+        if (item.checked == false) {
+            item.UnDone = item.UnDone + 1;
+        }else{
+            item.Done = item.Done + 1;
+        }
+        item.checked = false;
+        console.log(item);
+        let newList = [];
+        newList.push(item)
+
+        return newList
+    })
+localStorage.setItem('ListData' , JSON.stringify(NewData));
+
+  }
 
 
 // -------------------------------------------------------
 
 function Notes_EDU_APP() {
+  
 
     const backToInput = useRef()
     // list and keys Use State
@@ -38,11 +59,11 @@ function Notes_EDU_APP() {
     //  Creating Add List component
     const AddListElement = () => {
 
-        const [listItem, setListItem] = useState('')
+        const [listItem, setListItem] = useState('');
 
         function setInputData(inputListData) {
             const id = itemobj.length ? itemobj[itemobj.length - 1].id + 1 : 1;
-            const NewListData = { id, checked: false, data: inputListData };
+            const NewListData = { id, checked: false, data: inputListData, Done: 0, UnDone: 0 };
             const addListData = [...itemobj, NewListData];
             // ListData.push(NewListData);
             setItem(addListData);
@@ -83,8 +104,8 @@ function Notes_EDU_APP() {
                 <div className="welcome-div">
                     {/* celebration div */}
                     <div className="celebration" id='celebration'
-                        style={((itemobj.map((item)=>(item.checked))) ? 
-                            { display: "block" } : 
+                        style={((itemobj.map((item) => (item.checked))) ?
+                            { display: "block" } :
                             { display: "none" })}
                     >
 
@@ -116,7 +137,7 @@ function Notes_EDU_APP() {
             <section className='Content'>
 
                 {/* <ExampleUSeState /> */}
-                <List_Keys
+                <ListItem
                     ItemObj={itemobj}
                     handleDelete={handleDelete}
                     handlechange={handlechange}

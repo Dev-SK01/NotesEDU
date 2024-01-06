@@ -2,7 +2,7 @@ import React from "react";
 import './App.css'
 
 
-const List_Keys = ({ ItemObj, handleDelete, handlechange }) => {
+const ListItem = ({ ItemObj, handleDelete, handlechange }) => {
 
 
 
@@ -44,6 +44,11 @@ const List_Keys = ({ ItemObj, handleDelete, handlechange }) => {
                                     className="completed"
                                     style={(item.checked ? {} : { display: 'none' })}
                                 >🎉</span>
+                                {/* Completed Counts */}
+                                <div className="counts">
+                                    <span className="done">{item.Done}</span>
+                                    <span className="un-done">{item.UnDone}</span>
+                                </div>
                                 <button className='list-btn'
                                     onClick={() => (handleDelete(item.id))}>
                                     <i className="bi bi-bookmark-x-fill"></i>
@@ -65,4 +70,4 @@ const List_Keys = ({ ItemObj, handleDelete, handlechange }) => {
     )
 }
 
-export { List_Keys };
+export { ListItem };

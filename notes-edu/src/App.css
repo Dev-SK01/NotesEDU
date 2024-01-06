@@ -1,5 +1,4 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Rubik+Glitch&display=swap');
 
 .App {
   text-align: center;
@@ -19,6 +18,41 @@
 
 }
 
+.counts {
+  display: inline;
+  position: absolute;
+  right: 2.5rem;
+  text-align: center;
+  margin-top: .15rem;
+
+  .done {
+    font-family: 'Playfair Display';
+    font-size: 1.16rem;
+    color: green;
+    padding-inline: .2rem;
+    background: rgba(0, 128, 0, 0.315);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .un-done {
+    font-family: 'Playfair Display';
+    font-size: 1.16rem;
+    color: red;
+    padding-inline: .15rem;
+    margin-inline: .5rem;
+    background: rgba(255, 0, 0, 0.308);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
 .header h1 {
   width: 50%;
   margin-block: .5rem;
@@ -26,12 +60,12 @@
   /* background: #e0e0e0;
   box-shadow: -16px 16px 32px #dcdcdc,
     16px -16px 32px #e4e4e4; */
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
   color: blue;
   font-family: 'Playfair Display';
@@ -39,20 +73,17 @@
 }
 
 .List-form {
-  background-color: rgb(27, 91, 148);
   margin-top: 2rem;
   padding: 1.5rem;
   border-radius: 5px;
   position: relative;
   background: #e0e0e0;
-  /* box-shadow: 20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff; */
-    background: #e0e0e0;
-    box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(197, 255, 197, 0.589);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .List-form input[type=text] {
@@ -92,25 +123,31 @@
   font-size: 1.8rem;
 
 }
-.welcome-text{
+
+.welcome-text {
   font-size: 2rem;
   font-weight: 500;
   font-family: 'Playfair Display';
   position: absolute;
   top: 40%;
   left: .5rem;
+  color: blue;
+  font-weight: bolder;
 }
-.welcome-text p{
+
+.welcome-text p {
   margin-bottom: 0 !important;
 }
-.welcome-img{
+
+.welcome-img {
   background-image: url('./time-flies-bro.svg');
   background-position: center;
   background-repeat: no-repeat;
   height: 150px;
   width: 150px;
 }
-.welcome-div{
+
+.welcome-div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,19 +155,23 @@
   position: relative;
 }
 
-.welcome-icon{
+.welcome-icon {
   position: absolute;
   top: 40%;
   right: 1rem;
 }
-.welcome-icon p{
+
+.welcome-icon p {
   font-family: 'Playfair Display';
   font-size: 2rem;
+  color: blue;
+  font-weight: bolder;
 }
-.welcome-text i{
-  font-size:2rem;
+
+.welcome-text i {
+  font-size: 2rem;
   margin-top: -10px;
-  color:blue;
+  color: blue;
 }
 
 .form-switch .form-check-input {
@@ -163,28 +204,28 @@
   font-size: 1.5rem;
   font-weight: bolder;
   color: blue;
-  font-family:'Playfair Display' ;
+  font-family: 'Playfair Display';
 
 
 }
 
 .list-div {
-  margin-top:0rem;
+  margin-top: 0rem;
   background: #e0e0e0;
   /* box-shadow: 20px 20px 60px #bebebe,
     -20px -20px 60px #ffffff; */
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1),
-   0px 4px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 18px 0px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.5px);
   -webkit-backdrop-filter: blur(3.5px);
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  min-height: 50vh;
+  height: 50vh;
   margin-inline: 10px;
-
+overflow-y: scroll;
 }
 
 .list-div ul {
@@ -192,12 +233,12 @@
   margin-top: 1rem;
   width: 100%;
   padding: 0px 10px 0 10px !important;
-  
+
 }
 
 .list-div li {
   text-decoration: none;
-  background-color:rgb(197, 255, 197);
+  background-color: rgb(197, 255, 197);
   list-style: none;
   margin-bottom: .5rem;
   border-radius: 5px;
@@ -212,9 +253,12 @@
   position: absolute;
   left: 4rem;
   margin-top: .3rem;
-  font-family:'Playfair Display' ;
+  font-family: 'Playfair Display';
+  width: 50%;
+  overflow: auto;
 }
-.completed{
+
+.completed {
   position: absolute;
   transform: rotate(100deg);
   font-size: 1.2rem;
@@ -222,12 +266,12 @@
   margin-top: -3.5%;
 }
 
-.celebration{
- height:150px;
- width: 100%;
- background-image: url('https://i.gifer.com/origin/1a/1af8d3b487b77085d5288814f151e1de_w200.gif');
- position: absolute;
- top: 10%;
+.celebration {
+  height: 150px;
+  width: 100%;
+  background-image: url('https://i.gifer.com/origin/1a/1af8d3b487b77085d5288814f151e1de_w200.gif');
+  position: absolute;
+  top: 10%;
 }
 
 .list-btn {
@@ -239,7 +283,7 @@
 
 .list-btn i {
   font-size: 1.35rem;
-  color:rgb(255, 72, 72);
+  color: rgb(255, 72, 72);
 }
 
 .list-btn i:hover {
@@ -253,8 +297,8 @@
   position: absolute;
   width: 100%;
   background: white;
-  box-shadow: 0px 4px 18px 0px rgba(0,0,0,0.1),
-  0px 4px 18px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 18px 0px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(3.5px);
   -webkit-backdrop-filter: blur(3.5px);
   border-radius: 10px;
@@ -263,7 +307,7 @@
 
 .footer i {
   font-size: 2.3rem;
-  
+
 }
 
 .footer p {
@@ -276,7 +320,7 @@
   margin-bottom: 0;
 }
 
-.footer-img{
+.footer-img {
   background-image: url('./footer-img.svg');
   height: 100px;
   width: 100px;
