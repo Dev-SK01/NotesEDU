@@ -28,7 +28,7 @@
 
 ## Live Site :)
 
-https://dev-sk01.github.io/NotedEDU/
+https://dev-sk01.github.io/NotesEDU/
 
 
 ## Installation
