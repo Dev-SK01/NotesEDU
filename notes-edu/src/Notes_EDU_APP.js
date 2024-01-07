@@ -7,7 +7,7 @@ const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
 /*           Reset and completion count functionality  */
 const hours = new Date().getHours();
 console.log(hours);
-if (hours == 11) {
+if (hours == 12) {
 
     const ModifiedList = ParsedLocalList.map((item) => {
         if (item.checked == false) {
