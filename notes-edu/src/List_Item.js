@@ -45,10 +45,10 @@ const ListItem = ({ ItemObj, handleDelete, handlechange }) => {
                                     style={(item.checked ? {} : { display: 'none' })}
                                 >🎉</span>
                                 {/* Completed Counts */}
-                                <div className="counts">
+                                {/* <div className="counts">
                                     <span className="done">{item.Done}</span>
                                     <span className="un-done">{item.UnDone}</span>
-                                </div>
+                                </div> */}
                                 <button className='list-btn'
                                     onClick={() => (handleDelete(item.id))}>
                                     <i className="bi bi-bookmark-x-fill"></i>

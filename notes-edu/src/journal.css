@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Rubik+Glitch&display=swap');
+
+.new-btn {
+    display: flex;
+    justify-content: right;
+}
+
+.new-btn i {
+    font-size: 2rem;
+    color: blue;
+}
+.journal{
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+      0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    padding-bottom: 1rem;
+}
+.journal p {
+    font-weight: bolder;
+    font-family: 'Playfair Display';
+    padding-top: .5rem;
+    color: blue;
+    margin-inline:.5rem;
+}
+
+.journal textarea {
+    border-left: 2px dashed black;
+    border-top: 2px dashed black;
+    border-right: none;
+    border-bottom: none;
+    width: 95%;
+    margin-inline: .5rem;
+    font-family: 'Playfair Display';
+    font-size:.9rem;
+    min-height: 250px;
+}

@@ -2,28 +2,36 @@ import React, { useRef, useState } from 'react'
 import { ListItem } from './List_Item';
 import './App.css'
 import { Footer } from './Footer';
+import { Link, Route, Routes } from 'react-router-dom';
+import JournalNote from './JournalNote';
 
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
-/*           Reset and completion count functionality  */
-const hours = new Date().getHours();
-console.log(hours);
-if (hours == 12) {
 
-    const ModifiedList = ParsedLocalList.map((item) => {
-        if (item.checked == false) {
-            item.UnDone = item.UnDone + 1;
-        } else {
-            item.Done = item.Done + 1;
-        }
-        item.checked = false;
-        console.log(item);
-        return item
+// /*           Reset and completion count functionality  */
+// let Currentdate = new Date().toDateString().slice(0,3);
+// console.log(Currentdate);
 
-    })
-    localStorage.setItem('ListData', JSON.stringify(ModifiedList));
-}
+// if (Currentdate == new Date().toDateString().slice(0,3)){
+//      Currentdate = new Date().toDateString();
+//       console.log('Funciton Excuterd',Currentdate);
+// }
 
+// function resetList(listobj){
 
+//     const ModifiedList = listobj.map((item) => {
+//         if (item.checked == false) {
+//             item.UnDone = item.UnDone + 1;
+//         } else {
+//             item.Done = item.Done + 1;
+//         }
+//         item.checked = false;
+//         console.log(item);
+//         return item
+
+//     })
+//     localStorage.setItem('ListData', JSON.stringify(ModifiedList));
+
+// }
 // -------------------------------------------------------
 
 function Notes_EDU_APP() {
@@ -131,17 +139,25 @@ function Notes_EDU_APP() {
         <>
             {/* AddList Component */}
             <AddListElement />
-            <section className='Content'>
+            <div className="router">
+                <p><Link to='/'>Todo APP</Link></p>
+                <p><Link to='/journal'>Journal APP</Link></p>
+            </div>
+            <Routes>
+                <Route path='/' element={
+                    <section className='Content'>
+                        <ListItem
+                            ItemObj={itemobj}
+                            handleDelete={handleDelete}
+                            handlechange={handlechange}
+                        />
+                    </section>
+                }></Route>
 
-                {/* <ExampleUSeState /> */}
-                <ListItem
-                    ItemObj={itemobj}
-                    handleDelete={handleDelete}
-                    handlechange={handlechange}
-
-                />
-
-            </section>
+                <Route path='/journal' element={
+                    <JournalNote />
+                }></Route>
+            </Routes>
 
 
             <Footer
