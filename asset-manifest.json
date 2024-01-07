@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/NotesEDU/static/css/main.ba4327b4.css",
-    "main.js": "/NotesEDU/static/js/main.97f785a9.js",
+    "main.js": "/NotesEDU/static/js/main.44f18859.js",
     "static/media/footer-img.svg": "/NotesEDU/static/media/footer-img.481082fae67d7e02a004.svg",
     "static/media/time-flies-bro.svg": "/NotesEDU/static/media/time-flies-bro.70ad785af8e004a7f491.svg",
     "index.html": "/NotesEDU/index.html",
     "main.ba4327b4.css.map": "/NotesEDU/static/css/main.ba4327b4.css.map",
-    "main.97f785a9.js.map": "/NotesEDU/static/js/main.97f785a9.js.map"
+    "main.44f18859.js.map": "/NotesEDU/static/js/main.44f18859.js.map"
   },
   "entrypoints": [
     "static/css/main.ba4327b4.css",
-    "static/js/main.97f785a9.js"
+    "static/js/main.44f18859.js"
   ]
 }
