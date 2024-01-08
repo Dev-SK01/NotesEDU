@@ -34,7 +34,7 @@
   font-weight: bolder;
   font-family: 'Playfair Display';
   padding-inline: 2.5rem;
-  background: rgba(207, 161, 8, 0.404);
+  background: rgba(255, 255, 255, 0.562);
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -251,7 +251,7 @@
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  height: 50vh;
+  height: 40vh;
   margin-inline: 10px;
   overflow-y: scroll;
 }
