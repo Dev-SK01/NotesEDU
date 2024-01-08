@@ -2,29 +2,9 @@ import React, { useState } from 'react';
 import './journal.css';
 
 const JournalNote = () => {
-
-    const [journalData, setJournalData] = useState([
-        {
-            id: new Date().getTime() + 1,
-            date: new Date().toDateString(),
-            note: `I am So Proud
-                i am good , i'm sooo good
-                good good`
-        },
-        {
-            id: new Date().getTime() + 2,
-            date: new Date().toDateString(),
-            note: `I am So Proud
-                i am good , i'm sooo good
-                good good`
-        }, {
-            id: new Date().getTime() + 3,
-            date: new Date().toDateString(),
-            note: `I am So Proud
-                i am good , i'm sooo good
-                good good`
-        },
-    ] || [])
+    const parsedJournal = JSON.parse(localStorage.getItem('journalData'));
+    console.log(parsedJournal);
+    const [journalData, setJournalData] = useState(parsedJournal                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         || [])
     const showNotes = (e) => {
         // console.dir(e.target.parentNode.nextSibling)
         if (e.target.parentNode.nextSibling.style.display == 'block') {
@@ -32,7 +12,7 @@ const JournalNote = () => {
         } else {
             e.target.parentNode.nextSibling.style.display = 'block';
         }
-    }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
     const handleSave = (e, id) => {
         const ExistingData = journalData.filter((journal) => {
             if (journal.id != id) {
@@ -48,15 +28,31 @@ const JournalNote = () => {
             }
         })
         console.log(EditedData)
-        localStorage.setItem('journalData' , JSON.stringify([...ExistingData,EditedData]))
+        const combinedData = EditedData.concat(ExistingData);
+        setJournalData(combinedData);
+        localStorage.setItem('journalData' , JSON.stringify(combinedData))
+    }
+    const addNewNotes = ()=>{
+       const id = new Date().getTime();
+       const date = new Date().toDateString();
+       const note = '' ;
+       const newNote = [{id,date,note}];
+       setJournalData(newNote.concat(journalData))
+       localStorage.setItem('journalData' , JSON.stringify(newNote.concat(journalData)))
+       console.log(newNote)
     }
     return (
         <>
 
             <div className="new-btn container">
-                <i class="bi bi-file-earmark-plus-fill"></i>
+                <i 
+                class="bi bi-file-earmark-plus-fill"
+                onClick={()=>addNewNotes()}
+                ></i>
             </div>
             <div className="container">
+            {journalData.length > 0
+                        ?
                 <div className="journal-container">
                     <div div className="journal">
                         {journalData.map((data) => (
@@ -84,6 +80,13 @@ const JournalNote = () => {
                         ))}
                     </div>
                 </div>
+                 // showing the error message if there is no list
+                 :
+                 <div className="empty-list">
+                     <i className="bi bi-emoji-dizzy-fill"></i>
+                     <p>Your  Notes are Empty ):</p>
+                 </div>
+             }
             </div >
 
         </>

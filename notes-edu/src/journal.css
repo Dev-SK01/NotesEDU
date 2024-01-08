@@ -9,34 +9,39 @@
     font-size: 2rem;
     color: blue;
 }
-.journal{
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
-      0px 4px 18px 0px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border-radius: 10px;
+
+.journal {
     padding-bottom: 1rem;
-    height: 40vh;
 }
+
 .journal p {
     font-weight: bolder;
     font-family: 'Playfair Display';
     padding-top: .5rem;
     color: blue;
-    margin-inline:.5rem;
+    margin-inline: .5rem;
     font-size: 1.25rem;
 }
-.title{
+
+.title {
     position: relative;
     display: flex;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+        0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
-.save{
+
+.save {
     position: absolute;
     right: 1rem;
     color: blue;
     font-size: 2rem;
 }
+
 .journal textarea {
     display: none;
     border-left: 2px dashed black;
@@ -46,11 +51,40 @@
     width: 95%;
     margin-inline: .5rem;
     font-family: 'Playfair Display';
-    font-size:.9rem;
+    font-size: .9rem;
     min-height: 250px;
 }
 
-.journal textarea::placeholder{
+.journal textarea::placeholder {
     font-family: 'Playfair Display';
-    font-size:.9rem;
+    font-size: .9rem;
+}
+
+.empty-list {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.empty-list i {
+    font-size: 5rem;
+    color: rgb(22, 22, 22);
+    animation: 2s App-logo-spin infinite;
+    color: blue;
+}
+
+.empty-list p {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: blue;
+    font-family: 'Playfair Display';
+
+
 }

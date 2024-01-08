@@ -140,19 +140,23 @@ function Notes_EDU_APP() {
             {/* AddList Component */}
             <AddListElement />
             <div className="router">
-                <p><Link to='/'>Todo APP</Link></p>
+                <p><Link to='/todo'>Todo APP</Link></p>
                 <p><Link to='/journal'>Journal APP</Link></p>
             </div>
             <Routes>
-                <Route path='/' element={
-                    <section className='Content'>
-                        <ListItem
-                            ItemObj={itemobj}
-                            handleDelete={handleDelete}
-                            handlechange={handlechange}
-                        />
-                    </section>
-                }></Route>
+                <Route path='/todo' element={
+                    <>
+                        <section className='Content'>
+                            <ListItem
+                                ItemObj={itemobj}
+                                handleDelete={handleDelete}
+                                handlechange={handlechange}/>
+                        </section>
+
+                        <Footer
+                            react=" You Have "
+                            length={itemobj.length}/>
+                    </>}></Route>
 
                 <Route path='/journal' element={
                     <JournalNote />
@@ -160,10 +164,6 @@ function Notes_EDU_APP() {
             </Routes>
 
 
-            <Footer
-                react=" You Have "
-                length={itemobj.length}
-            />
 
         </>
     )
