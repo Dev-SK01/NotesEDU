@@ -19,7 +19,7 @@ const JournalNote = () => {
                 return journal
             }
         })
-        console.log(ExistingData)
+        // console.log(ExistingData)
        const EditedData = journalData.filter((data) => {
             let Edited = e.target.parentNode.nextSibling.value;
             if (data.id == id) {
@@ -27,10 +27,11 @@ const JournalNote = () => {
                 return data
             }
         })
-        console.log(EditedData)
+        // console.log(EditedData)
         const combinedData = EditedData.concat(ExistingData);
         setJournalData(combinedData);
         localStorage.setItem('journalData' , JSON.stringify(combinedData))
+        showNotes(e);
     }
     const addNewNotes = ()=>{
        const id = new Date().getTime();
@@ -41,10 +42,39 @@ const JournalNote = () => {
        localStorage.setItem('journalData' , JSON.stringify(newNote.concat(journalData)))
        console.log(newNote)
     }
+    const handleRemove = (id)=>{
+      const removeData = journalData.filter((dataobj)=>{
+       if(dataobj.id != id){
+        return dataobj;
+       }
+       
+      })
+      console.log(removeData)
+      setJournalData(removeData);
+      localStorage.setItem('journalData' , JSON.stringify(removeData));
+    }
+
+    const handleSearch= (e)=>{
+       const search =journalData.map((searchjournal)=>{
+            const searchdata = e.target.value.toString().toLowerCase().trim();
+            const findjournal = searchjournal.date.toLowerCase().trim().indexOf(searchdata);
+            if(findjournal != -1){
+               return searchjournal
+            }else{
+                return searchjournal
+            }
+        })
+        setJournalData(search)
+    }
     return (
         <>
 
             <div className="new-btn container">
+                <input 
+                type="text" 
+                placeholder='Seach Your Notes...'
+                onChange={(e)=>handleSearch(e)}
+                />
                 <i 
                 class="bi bi-file-earmark-plus-fill"
                 onClick={()=>addNewNotes()}
@@ -58,7 +88,12 @@ const JournalNote = () => {
                         {journalData.map((data) => (
                             <>
                                 <div className='title'>
-                                    <p onClick={(e) => showNotes(e)}>{data.date}</p>
+                                    <p onClick={(e) => showNotes(e)}>{data.date}
+                                    <i 
+                                    class="bi bi-x-circle remove"
+                                    onClick={()=>handleRemove(data.id)}
+                                    ></i>
+                                    </p>
                                     <i
                                         className="bi bi-check2-circle save"
                                         onClick={(e) => handleSave(e, data.id)}
