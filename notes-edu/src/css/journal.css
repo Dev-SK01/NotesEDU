@@ -39,12 +39,14 @@
     position: absolute;
     left: 10rem;
     top: .7rem;
+    cursor:pointer;
 }
 
 .journal {
     padding-bottom: 1rem;
     height: 60vh;
     overflow-y: scroll;
+    cursor: pointer;
 }
 
 .journal p {
@@ -54,6 +56,7 @@
     color: blue;
     margin-inline: .5rem;
     font-size: 1.25rem;
+    cursor: pointer ;
 }
 
 .title {

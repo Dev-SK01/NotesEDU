@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import './css/App.css'
 
 const Footer = ({react , length}) => {
   return (
@@ -10,7 +10,7 @@ const Footer = ({react , length}) => {
       </p>
     </footer>
     <div className="footer-img">
-        
+        {/* footer Image Inserted in CSS App.css */}
     </div>
     </>
   )

@@ -164,7 +164,7 @@
 }
 
 .welcome-img {
-  background-image: url('./time-flies-bro.svg');
+  background-image: url('../assets/time-flies-bro.svg');
   background-position: center;
   background-repeat: no-repeat;
   height: 150px;
@@ -345,7 +345,7 @@
 }
 
 .footer-img {
-  background-image: url('./footer-img.svg');
+  background-image: url('../assets/footer-img.svg');
   height: 100px;
   width: 100px;
   position: absolute;

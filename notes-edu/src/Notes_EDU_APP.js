@@ -1,44 +1,23 @@
 import React, { useRef, useState } from 'react'
-import { ListItem } from './List_Item';
-import './App.css'
+import { ListItem } from './TodoApp';
+import './css/App.css'
 import { Footer } from './Footer';
 import { Link, Route, Routes } from 'react-router-dom';
 import JournalNote from './JournalNote';
 
+// Getting the data from local storage
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
-
-// /*           Reset and completion count functionality  */
-// let Currentdate = new Date().toDateString().slice(0,3);
-// console.log(Currentdate);
-
-// if (Currentdate == new Date().toDateString().slice(0,3)){
-//      Currentdate = new Date().toDateString();
-//       console.log('Funciton Excuterd',Currentdate);
-// }
-
-// function resetList(listobj){
-
-//     const ModifiedList = listobj.map((item) => {
-//         if (item.checked == false) {
-//             item.UnDone = item.UnDone + 1;
-//         } else {
-//             item.Done = item.Done + 1;
-//         }
-//         item.checked = false;
-//         console.log(item);
-//         return item
-
-//     })
-//     localStorage.setItem('ListData', JSON.stringify(ModifiedList));
-
-// }
-// -------------------------------------------------------
-
 function Notes_EDU_APP() {
 
-
+    /* 
+       -Using React Hook to update the data realtime
+       -itemobj has the data of the current data , setitem change the data when data updated 
+       -handleDelete() handles the delete function
+       -handlechange*() handles when the  task completed or not 
+       -AddListElement() handles the new data added --> handleSubmit() handle the data is added
+   
+   */
     const backToInput = useRef()
-    // list and keys Use State
     const [itemobj, setItem] = useState(ParsedLocalList || [])
 
     function handlechange(id) {
@@ -82,7 +61,7 @@ function Notes_EDU_APP() {
             // clearing the input after list added
             setListItem('');
         }
-        // ------------------------------- Components -_-____________-
+        //  ------------------------------- rendering the header  --------------------
         return (
             <>
                 <form className='List-form' onSubmit={handleListSubmit}>
@@ -133,8 +112,6 @@ function Notes_EDU_APP() {
 
     }
 
-
-    // Controlled Input Component
     return (
         <>
             {/* AddList Component */}
@@ -144,23 +121,40 @@ function Notes_EDU_APP() {
                 <p><Link to='/journal'>Journal APP</Link></p>
             </div>
             <Routes>
+                {/* todo App Route */}
+                <Route path='/' element={
+                    <>
+                        <section className='Content'>
+                            <ListItem
+                                ItemObj={itemobj}
+                                handleDelete={handleDelete}
+                                handlechange={handlechange} />
+                        </section>
+
+                        <Footer
+                            react=" You Have "
+                            length={itemobj.length} />
+                    </>
+                }></Route>
                 <Route path='/todo' element={
                     <>
                         <section className='Content'>
                             <ListItem
                                 ItemObj={itemobj}
                                 handleDelete={handleDelete}
-                                handlechange={handlechange}/>
+                                handlechange={handlechange} />
                         </section>
 
                         <Footer
                             react=" You Have "
-                            length={itemobj.length}/>
-                    </>}></Route>
-
+                            length={itemobj.length} />
+                    </>
+                }></Route>
+                {/* Journal App Route */}
                 <Route path='/journal' element={
                     <JournalNote />
                 }></Route>
+
             </Routes>
 
 

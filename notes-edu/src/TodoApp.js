@@ -1,7 +1,11 @@
 import React from "react";
-import './App.css'
+import './css/App.css'
 
 
+/*
+ -all the properties are imported from Noted_EDU_APP file.
+ -{ ItemObj, handleDelete, handlechange } these are the imported properties.
+*/
 const ListItem = ({ ItemObj, handleDelete, handlechange }) => {
 
 

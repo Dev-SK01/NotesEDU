@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './css/App.css';
 import { Notes_EDU_APP } from './Notes_EDU_APP';
 import { Header } from './Header';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,6 +9,7 @@ function App() {
     <>
       <Header />
       <BrowserRouter>
+      {/* Whole App Component */}
         <Notes_EDU_APP />
       </BrowserRouter>
 
