@@ -8,7 +8,7 @@
 
 
 
-![Logo](https://dev-sk01.github.io/NotedEDU/notes-edu.png)
+![Logo](https://raw.githubusercontent.com/Dev-SK01/NotesEDU/master/notes-edu/public/notes-edu.png)
 
 
 ## More About Notes EDU
