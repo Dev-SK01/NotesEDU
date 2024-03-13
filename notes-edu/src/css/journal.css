@@ -10,7 +10,7 @@
     color: blue;
 }
 
-.new-btn input{
+.new-btn input {
     position: relative;
     background: #e0e0e0;
     backdrop-filter: blur(4px);
@@ -22,7 +22,8 @@
     margin-bottom: .5rem;
     border: none;
 }
-.new-btn input[type='text']{
+
+.new-btn input[type='text'] {
     font-family: 'Playfair Display';
 }
 
@@ -32,14 +33,20 @@
     opacity: .7;
     font-size: 1rem;
     font-family: 'Playfair Display';
-  }
-.remove{
+}
+
+.remove {
     font-size: 1.25rem;
-    color: blue;
+    color: rgba(233, 13, 49, 0.925);
     position: absolute;
-    left: 10rem;
+    background: rgba(223, 65, 65, 0.459);
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+        0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+    left: 12rem;
     top: .7rem;
-    cursor:pointer;
+    cursor: pointer;
+    border-radius: 10px;
+    padding-inline: .2rem;
 }
 
 .journal {
@@ -56,7 +63,7 @@
     color: blue;
     margin-inline: .5rem;
     font-size: 1.25rem;
-    cursor: pointer ;
+    cursor: pointer;
 }
 
 .title {
@@ -69,13 +76,25 @@
     -webkit-backdrop-filter: blur(3.5px);
     border-radius: 10px;
     margin-bottom: 1rem;
+    height: 60px;
 }
-
-.save {
+.smallnote{
+    position: absolute;
+    bottom: 0;
+    margin-left: .2rem;
+    font-weight: bold;
+}
+.save , .bi-check2-circle {
     position: absolute;
     right: 1rem;
-    color: blue;
-    font-size: 2rem;
+    top: .5rem;
+    color: green;
+    font-size:1.5rem;
+    background: rgba(65, 223, 73, 0.459);
+    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+        0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding-inline:.2rem;
 }
 
 .journal textarea {
@@ -129,4 +148,3 @@
     color: blue;
     font-family: 'Playfair Display';
 }
-

@@ -41,6 +41,7 @@ const JournalNote = () => {
         const combinedData = EditedData.concat(ExistingData);
         setJournalData(combinedData);
         localStorage.setItem('journalData', JSON.stringify(combinedData))
+        alert('Content Saved (:')
         showNotes(e);
     }
     const addNewNotes = () => {
@@ -53,15 +54,18 @@ const JournalNote = () => {
         console.log(newNote)
     }
     const handleRemove = (id) => {
-        const removeData = journalData.filter((dataobj) => {
-            if (dataobj.id != id) {
-                return dataobj;
-            }
-
-        })
-        console.log(removeData)
-        setJournalData(removeData);
-        localStorage.setItem('journalData', JSON.stringify(removeData));
+        if(window.confirm('Do you Want To Delete ?')){
+            const removeData = journalData.filter((dataobj) => {
+                if (dataobj.id != id) {
+                    return dataobj;
+                }
+    
+            })
+            console.log(removeData)
+            setJournalData(removeData);
+            localStorage.setItem('journalData', JSON.stringify(removeData));
+        }
+        
     }
 
     // this function is under testing | testing completed
@@ -121,6 +125,7 @@ const JournalNote = () => {
                                             className="bi bi-check2-circle save"
                                             onClick={(e) => handleSave(e, data.id)}
                                         ></i>
+                                    <i className='smallnote'>{data.note.slice(0,45)}</i>
                                     </div>
                                     <textarea
                                         name="textarea"

@@ -47,7 +47,13 @@ function Notes_EDU_APP() {
 
         function setInputData(inputListData) {
             const id = itemobj.length ? itemobj[itemobj.length - 1].id + 1 : 1;
-            const NewListData = { id, checked: false, data: inputListData, Done: 0, UnDone: 0 };
+            const NewListData = {
+                id,
+                checked: false,
+                data: inputListData,
+                Done: 0,
+                UnDone: 0
+            };
             const addListData = [...itemobj, NewListData];
             // ListData.push(NewListData);
             setItem(addListData);
@@ -79,8 +85,7 @@ function Notes_EDU_APP() {
                     <button
                         type='submit'
                         className='add-btn'
-                        onChange={() => (backToInput.current.focus())}
-                    >
+                        onChange={() => (backToInput.current.focus())}>
                         <i className="bi bi-check2-circle"></i>
                     </button>
                 </form>
@@ -90,8 +95,7 @@ function Notes_EDU_APP() {
                     <div className="celebration" id='celebration'
                         style={((itemobj.map((item) => (item.checked))) ?
                             { display: "block" } :
-                            { display: "none" })}
-                    >
+                            { display: "none" })}>
 
                     </div>
                     <div className="welcome-text">
@@ -117,43 +121,49 @@ function Notes_EDU_APP() {
             {/* AddList Component */}
             <AddListElement />
             <div className="router">
-                <p><Link to='/todo'>Todo APP</Link></p>
-                <p><Link to='/journal'>Journal APP</Link></p>
+                <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
+                <p><Link to='NotesEDU/journal'>Journal APP</Link></p>
             </div>
             <Routes>
                 {/* todo App Route */}
-                <Route path='/' element={
+                <Route path="NotesEDU" 
+                element={
                     <>
                         <section className='Content'>
                             <ListItem
                                 ItemObj={itemobj}
                                 handleDelete={handleDelete}
-                                handlechange={handlechange} />
+                                handlechange={handlechange}
+                            />
                         </section>
 
                         <Footer
                             react=" You Have "
-                            length={itemobj.length} />
-                    </>
-                }></Route>
-                <Route path='/todo' element={
-                    <>
-                        <section className='Content'>
-                            <ListItem
-                                ItemObj={itemobj}
-                                handleDelete={handleDelete}
-                                handlechange={handlechange} />
-                        </section>
+                            length={itemobj.length}
+                        />
+                    </>}>
+                    </Route>
+                <Route path='NotesEDU/todo'
+                    element={
+                        <>
+                            <section className='Content'>
+                                <ListItem
+                                    ItemObj={itemobj}
+                                    handleDelete={handleDelete}
+                                    handlechange={handlechange}
+                                />
+                            </section>
 
-                        <Footer
-                            react=" You Have "
-                            length={itemobj.length} />
-                    </>
-                }></Route>
+                            <Footer
+                                react=" You Have "
+                                length={itemobj.length}
+                            />
+                        </>}>
+                </Route>
                 {/* Journal App Route */}
-                <Route path='/journal' element={
-                    <JournalNote />
-                }></Route>
+                <Route path='NotesEDU/journal'
+                    element={<JournalNote />}
+                ></Route>
 
             </Routes>
 
