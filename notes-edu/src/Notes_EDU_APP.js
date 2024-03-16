@@ -33,11 +33,13 @@ function Notes_EDU_APP() {
         const list_item = itemobj.filter((item) => (
             item.id != id
         ))
-
-        setItem(list_item);
-        // storing the to the local storage when the task deleted
-        localStorage.setItem('ListData', JSON.stringify(list_item))
+        if (window.confirm('Are You Sure ?')) {
+            setItem(list_item);
+            // storing the to the local storage when the task deleted
+            localStorage.setItem('ListData', JSON.stringify(list_item))
+        }
     }
+
     // -----------------------------------------------
 
     //  Creating Add List component
@@ -90,6 +92,17 @@ function Notes_EDU_APP() {
                     </button>
                 </form>
 
+
+            </>
+
+        )
+
+
+    }
+    //    creatig a welcome div 
+    const WelcomeDiv = () => {
+        return (
+            <>
                 <div className="welcome-div">
                     {/* celebration div */}
                     <div className="celebration" id='celebration'
@@ -107,45 +120,43 @@ function Notes_EDU_APP() {
                     <div className="welcome-img">
                     </div>
                 </div>
-
-
             </>
-
         )
-
-
     }
-
     return (
         <>
-            {/* AddList Component */}
-            <AddListElement />
             <div className="router">
                 <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
                 <p><Link to='NotesEDU/journal'>Journal APP</Link></p>
             </div>
             <Routes>
                 {/* todo App Route */}
-                <Route path="NotesEDU" 
-                element={
-                    <>
-                        <section className='Content'>
-                            <ListItem
-                                ItemObj={itemobj}
-                                handleDelete={handleDelete}
-                                handlechange={handlechange}
-                            />
-                        </section>
+                <Route path="NotesEDU"
+                    element={
+                        <>
+                            {/* AddList Component */}
+                            <WelcomeDiv />
+                            <AddListElement />
+                            <section className='Content'>
+                                <ListItem
+                                    ItemObj={itemobj}
+                                    handleDelete={handleDelete}
+                                    handlechange={handlechange}
+                                />
+                            </section>
 
-                        <Footer
-                            react=" You Have "
-                            length={itemobj.length}
-                        />
-                    </>}>
-                    </Route>
+                            <Footer
+                                react=" You Have "
+                                length={itemobj.length}
+                            />
+                        </>}>
+                </Route>
                 <Route path='NotesEDU/todo'
                     element={
                         <>
+                            {/* AddList Component */}
+                            <WelcomeDiv />
+                            <AddListElement />
                             <section className='Content'>
                                 <ListItem
                                     ItemObj={itemobj}
@@ -162,7 +173,7 @@ function Notes_EDU_APP() {
                 </Route>
                 {/* Journal App Route */}
                 <Route path='NotesEDU/journal'
-                    element={<JournalNote />}
+                    element={<JournalNote WelcomeDiv={WelcomeDiv} />}
                 ></Route>
 
             </Routes>

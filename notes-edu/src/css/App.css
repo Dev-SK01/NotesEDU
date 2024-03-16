@@ -15,16 +15,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  /* background: rgba(255, 255, 255, 0.562);
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px); */
 }
 
 /* ---------------------------- Routing division----------------- */
 .router {
   display: flex;
   justify-content: space-between;
-  margin-inline: 1rem;
+  padding-inline: 1rem;
   position: relative;
-  z-index: 10;
+  z-index: 0;
+  padding-top: 1rem;
+  /* background: rgba(255, 255, 255, 0.562);
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(4px); */
+  border-bottom:solid 10px rgb(223, 223, 224);
+  border-radius: 20px;
 
 }
 
@@ -98,7 +106,6 @@
 }
 
 .List-form {
-  margin-top: 2rem;
   padding: 1.5rem;
   border-radius: 5px;
   position: relative;
@@ -247,7 +254,7 @@
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  height: 45vh;
+  height: 55vh;
   margin-inline: 10px;
   overflow-y: scroll;
 }
@@ -317,7 +324,7 @@
 
 .footer {
   border-radius: 10px;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   position: absolute;
   width: 100%;
   background: white;

@@ -29,7 +29,7 @@ const ListItem = ({ ItemObj, handleDelete, handlechange }) => {
                                 <input
                                     type="checkbox"
                                     name="checkbox"
-                                    class="form-check-input"
+                                    className="form-check-input"
                                     id={item.id}
                                     checked={item.checked}
                                     onChange={() => (handlechange(item.id))}

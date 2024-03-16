@@ -8,7 +8,7 @@ import './css/journal.css';
   -handleremove() hanfdles daleting notes function
 */
 
-const JournalNote = () => {
+const JournalNote = ({WelcomeDiv}) => {
     // getting the data from localstorage
     const parsedJournal = JSON.parse(localStorage.getItem('journalData'));
     console.log(parsedJournal);
@@ -22,36 +22,42 @@ const JournalNote = () => {
         }
     }
     const handleSave = (e, id) => {
-        const ExistingData = journalData.filter((journal) => {
-            if (journal.id != id) {
-                return journal
-            }
-        })
-        // console.log(ExistingData)
-        // Handles the while the data is edited
-        const EditedData = journalData.filter((data) => {
-            let Edited = e.target.parentNode.nextSibling.value;
-            if (data.id == id) {
-                data.note = Edited;
-                return data
-            }
-        })
-        // console.log(EditedData)
-        // joining the previous data with new data
-        const combinedData = EditedData.concat(ExistingData);
-        setJournalData(combinedData);
-        localStorage.setItem('journalData', JSON.stringify(combinedData))
-        alert('Content Saved (:')
-        showNotes(e);
+        if(e.target.parentNode.nextSibling.value == ''){
+            showNotes(e);
+            alert('Content Empty !!');
+        }else{
+            const ExistingData = journalData.filter((journal) => {
+                if (journal.id != id) {
+                    return journal
+                }
+            })
+            // console.log(ExistingData)
+            // Handles the while the data is edited
+            const EditedData = journalData.filter((data) => {
+                let Edited = e.target.parentNode.nextSibling.value;
+                if (data.id == id) {
+                    data.note = Edited;
+                    return data
+                }
+            })
+            // console.log(EditedData)
+            // joining the previous data with new data
+            const combinedData = EditedData.concat(ExistingData);
+            setJournalData(combinedData);
+            localStorage.setItem('journalData', JSON.stringify(combinedData))
+            alert('Content Saved!!')
+            showNotes(e);
+        }
+        
     }
     const addNewNotes = () => {
         const id = new Date().getTime();
         const date = new Date().toDateString();
         const note = '';
         const newNote = [{ id, date, note }];
-        setJournalData(newNote.concat(journalData))
-        localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)))
-        console.log(newNote)
+        setJournalData(newNote.concat(journalData));
+        localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)));
+        // console.log(newNote)
     }
     const handleRemove = (id) => {
         if(window.confirm('Do you Want To Delete ?')){
@@ -61,7 +67,7 @@ const JournalNote = () => {
                 }
     
             })
-            console.log(removeData)
+            // console.log(removeData)
             setJournalData(removeData);
             localStorage.setItem('journalData', JSON.stringify(removeData));
         }
@@ -95,7 +101,7 @@ const JournalNote = () => {
     }
     return (
         <>
-
+            <WelcomeDiv />
             <div className="new-btn container">
                 <input
                     type="text"
@@ -103,29 +109,33 @@ const JournalNote = () => {
                     onChange={(e) => handleSearch(e)}
                 />
                 <i
-                    class="bi bi-file-earmark-plus-fill"
+                    className="bi bi-file-earmark-plus-fill"
                     onClick={() => addNewNotes()}
                 ></i>
             </div>
             <div className="container">
                 {journalData.length > 0
                     ?
-                    <div className="journal-container">
-                        <div div className="journal">
+                    <div className="journal-container" >
+                        <div div className="journal" key={journalData.id}>
                             {journalData.map((data) => (
                                 <>
                                     <div className='title'>
                                         <p onClick={(e) => showNotes(e)}>{data.date}
                                             <i
-                                                class="bi bi-x-circle remove"
+                                                className="bi bi-trash remove"
                                                 onClick={() => handleRemove(data.id)}
                                             ></i>
+                                           
                                         </p>
                                         <i
                                             className="bi bi-check2-circle save"
                                             onClick={(e) => handleSave(e, data.id)}
                                         ></i>
-                                    <i className='smallnote'>{data.note.slice(0,45)}</i>
+                                    <span className='smallnote'>
+                                        {data.note.slice(0,47)}<br />
+                                        {data.note.slice(47,93)}<br />
+                                    </span>
                                     </div>
                                     <textarea
                                         name="textarea"
@@ -145,10 +155,10 @@ const JournalNote = () => {
                     </div>
                     // showing the error message if there is no list
                     :
-                    <div className="empty-list">
+                    (<div className="empty-list">
                         <i className="bi bi-emoji-dizzy-fill"></i>
                         <p>Your  Notes are Empty ):</p>
-                    </div>
+                    </div>)
                 }
             </div >
 
