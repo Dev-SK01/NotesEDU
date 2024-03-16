@@ -65,6 +65,7 @@ function Notes_EDU_APP() {
         function handleListSubmit(e) {
             e.preventDefault();
             // adding the list to the ListData Object
+            alert('List Added')
             setInputData(listItem)
             // clearing the input after list added
             setListItem('');
@@ -125,10 +126,15 @@ function Notes_EDU_APP() {
     }
     return (
         <>
-            <div className="router">
-                <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
-                <p><Link to='NotesEDU/journal'>Journal APP</Link></p>
-            </div>
+            <section className='main-nav'>
+                <header className='header'>
+                    <h1 style={{ fontSize: '2rem', fontWeight: 'bolder' }}>Notes Edu</h1>
+                </header>
+                <div className="router">
+                    <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
+                    <p><Link to='NotesEDU/journal'>Journal APP</Link></p>
+                </div>
+            </section>
             <Routes>
                 {/* todo App Route */}
                 <Route path="NotesEDU"

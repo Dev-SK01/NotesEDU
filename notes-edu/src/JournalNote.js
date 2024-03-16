@@ -54,6 +54,7 @@ const JournalNote = ({WelcomeDiv}) => {
         const id = new Date().getTime();
         const date = new Date().toDateString();
         const note = '';
+        alert('Journal Added')
         const newNote = [{ id, date, note }];
         setJournalData(newNote.concat(journalData));
         localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)));
@@ -133,8 +134,8 @@ const JournalNote = ({WelcomeDiv}) => {
                                             onClick={(e) => handleSave(e, data.id)}
                                         ></i>
                                     <span className='smallnote'>
-                                        {data.note.slice(0,47)}<br />
-                                        {data.note.slice(47,93)}<br />
+                                        {data.note.slice(0,50)}<br />
+                                        {data.note.slice(50,100)}<br />
                                     </span>
                                     </div>
                                     <textarea
