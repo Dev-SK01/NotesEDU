@@ -113,10 +113,10 @@ function Notes_EDU_APP() {
 
                     </div>
                     <div className="welcome-text">
-                        <p>Hello👋</p>
+                        <p contentEditable = "true">Hello👋</p>
                     </div>
                     <div className="welcome-icon">
-                        <p>Buddy,</p>
+                        <p contentEditable = "true">Buddy,</p>
                     </div>
                     <div className="welcome-img">
                     </div>
@@ -131,31 +131,14 @@ function Notes_EDU_APP() {
                     <h1 style={{ fontSize: '2rem', fontWeight: 'bolder' }}>Notes Edu</h1>
                 </header>
                 <div className="router">
-                    <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
                     <p><Link to='NotesEDU/journal'>Journal APP</Link></p>
+                    <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
                 </div>
             </section>
             <Routes>
                 {/* todo App Route */}
                 <Route path="NotesEDU"
-                    element={
-                        <>
-                            {/* AddList Component */}
-                            <WelcomeDiv />
-                            <AddListElement />
-                            <section className='Content'>
-                                <ListItem
-                                    ItemObj={itemobj}
-                                    handleDelete={handleDelete}
-                                    handlechange={handlechange}
-                                />
-                            </section>
-
-                            <Footer
-                                react=" You Have "
-                                length={itemobj.length}
-                            />
-                        </>}>
+                    element={<JournalNote WelcomeDiv={WelcomeDiv} />}>
                 </Route>
                 <Route path='NotesEDU/todo'
                     element={

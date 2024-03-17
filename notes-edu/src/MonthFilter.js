@@ -4,7 +4,7 @@ const MonthFilter = ({handleFilter}) => {
   return (
     <>
      <div className="month-list container">
-       <span onClick={(e)=>(handleFilter(e))}>ALL</span>
+       <span onClick={(e)=>(handleFilter(e))} className='active'>ALL</span>
        <span onClick={(e)=>(handleFilter(e))}>JAN</span>
        <span onClick={(e)=>(handleFilter(e))}>FEB</span>
        <span onClick={(e)=>(handleFilter(e))}>MAR</span>

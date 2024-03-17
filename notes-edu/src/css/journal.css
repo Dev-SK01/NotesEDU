@@ -4,7 +4,19 @@
     display: flex;
     justify-content: right;
 }
-
+::-webkit-scrollbar {
+    height:3px;
+    width:0;
+}
+::-webkit-scrollbar-button {
+    background: blue;
+}
+/* ::-webkit-scrollbar-track-piece {
+    background: blue;
+} */
+::-webkit-scrollbar-thumb {
+    background: blue;
+}
 .new-btn i {
     font-size: 2rem;
     color: blue;
@@ -51,7 +63,7 @@
 
 .journal {
     padding-bottom: 1rem;
-    height: 60vh;
+    height: 58vh;
     overflow-y: scroll;
     cursor: pointer;
 }
@@ -111,13 +123,10 @@
     font-family: 'Playfair Display';
     font-size: .9rem;
     min-height: 200px;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
-        0px 4px 18px 0px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
     border-radius: 10px;
     margin-top: -.7rem;
+    position: relative;
+    z-index: 999999;
 }
 
 .journal textarea::placeholder {
@@ -167,7 +176,7 @@
     box-shadow: 1px 4px 18px 4px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.5px);
     border-radius: 10px;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
 }
 
 .month-list span {
@@ -187,5 +196,5 @@
 
 .active{
     background-color:blue !important;
-    color: black !important;
+    color: white     !important;
 }
