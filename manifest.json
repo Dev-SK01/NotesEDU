@@ -18,8 +18,29 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "start_url": "https://dev-sk01.github.io/NotesEDU",
+  "display": "fullscreen",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "id": "NE",
+  "description": "It A reatime Journal noting and task adding APP .It is a productive App",
+  "dir": "auto",
+  "lang": "en",
+  "categories": [
+    "personalization",
+    "utilities"
+  ],
+  "shortcuts": [
+    {
+      "name": "TODO",
+      "url": "https://dev-sk01.github.io/NotesEDU/todo",
+      "description": "Goto Todo App"
+    },
+    {
+      "name": "Journal",
+      "url": "https://dev-sk01.github.io/NotesEDU/journal",
+      "description": "Goto journal"
+    }
+  ],
+  "scope": "https://dev-sk01.github.io/NotesEDU"
 }
