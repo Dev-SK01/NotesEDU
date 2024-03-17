@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './css/journal.css';
+import MonthFilter from './MonthFilter';
 
 
 /*
   -handlesave() handles the sava function
   -addNotes() handles the new note
-  -handleremove() hanfdles daleting notes function
+  -handleremove() handles daleting notes function
 */
 
-const JournalNote = ({WelcomeDiv}) => {
+const JournalNote = ({ WelcomeDiv }) => {
     // getting the data from localstorage
     const parsedJournal = JSON.parse(localStorage.getItem('journalData'));
     console.log(parsedJournal);
@@ -22,10 +23,10 @@ const JournalNote = ({WelcomeDiv}) => {
         }
     }
     const handleSave = (e, id) => {
-        if(e.target.parentNode.nextSibling.value == ''){
+        if (e.target.parentNode.nextSibling.value == '') {
             showNotes(e);
             alert('Content Empty !!');
-        }else{
+        } else {
             const ExistingData = journalData.filter((journal) => {
                 if (journal.id != id) {
                     return journal
@@ -48,7 +49,7 @@ const JournalNote = ({WelcomeDiv}) => {
             alert('Content Saved!!')
             showNotes(e);
         }
-        
+
     }
     const addNewNotes = () => {
         const id = new Date().getTime();
@@ -61,18 +62,18 @@ const JournalNote = ({WelcomeDiv}) => {
         // console.log(newNote)
     }
     const handleRemove = (id) => {
-        if(window.confirm('Do you Want To Delete ?')){
+        if (window.confirm('Do you Want To Delete ?')) {
             const removeData = journalData.filter((dataobj) => {
                 if (dataobj.id != id) {
                     return dataobj;
                 }
-    
+
             })
             // console.log(removeData)
             setJournalData(removeData);
             localStorage.setItem('journalData', JSON.stringify(removeData));
         }
-        
+
     }
 
     // this function is under testing | testing completed
@@ -100,6 +101,24 @@ const JournalNote = ({WelcomeDiv}) => {
 
 
     }
+
+    // function for handle the filter 
+    function handleFilter(e) {
+        const month = e.target.innerText;
+        console.log(month)
+        if (month === "ALL") {
+            setJournalData(parsedJournal)
+        } else {
+            const filteredMonth =parsedJournal.filter((data) => {
+                if (data.date.toLowerCase().includes(month.toLowerCase()) == true) {
+                    return data
+                }
+            });
+            setJournalData(filteredMonth);
+        }
+
+
+    }
     return (
         <>
             <WelcomeDiv />
@@ -114,6 +133,7 @@ const JournalNote = ({WelcomeDiv}) => {
                     onClick={() => addNewNotes()}
                 ></i>
             </div>
+            <MonthFilter handleFilter={handleFilter} />
             <div className="container">
                 {journalData.length > 0
                     ?
@@ -127,16 +147,16 @@ const JournalNote = ({WelcomeDiv}) => {
                                                 className="bi bi-trash remove"
                                                 onClick={() => handleRemove(data.id)}
                                             ></i>
-                                           
+
                                         </p>
                                         <i
                                             className="bi bi-check2-circle save"
                                             onClick={(e) => handleSave(e, data.id)}
                                         ></i>
-                                    <span className='smallnote'>
-                                        {data.note.slice(0,50)}<br />
-                                        {data.note.slice(50,100)}<br />
-                                    </span>
+                                        <span className='smallnote'>
+                                            {data.note.slice(0, 50)}<br />
+                                            {data.note.slice(50, 100)}<br />
+                                        </span>
                                     </div>
                                     <textarea
                                         name="textarea"
