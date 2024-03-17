@@ -105,11 +105,27 @@ const JournalNote = ({ WelcomeDiv }) => {
     // function for handle the filter 
     function handleFilter(e) {
         const month = e.target.innerText;
-        console.log(month)
+        e.target.classList = "active";
+        // logic for finding the array with classname == active
+        const child = e.target.parentNode.childNodes;
+        const filteredChild =[];
+        // finding the array with classname == active
+        for (var i = 0; i <= child.length - 1; i++) {
+            if (child[i].className == 'active') {
+                filteredChild.push(child[i]);
+            }};
+        // setting the element classname == '';
+        filteredChild.forEach((arr)=>{
+            if(arr !== e.target){
+                arr.className ="";
+            }
+        });
+        // console.log(filteredChild.length)
+        // console.log(child.length)
         if (month === "ALL") {
             setJournalData(parsedJournal)
         } else {
-            const filteredMonth =parsedJournal.filter((data) => {
+            const filteredMonth = parsedJournal.filter((data) => {
                 if (data.date.toLowerCase().includes(month.toLowerCase()) == true) {
                     return data
                 }

@@ -42,7 +42,7 @@
     background: rgba(223, 65, 65, 0.459);
     box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
         0px 4px 18px 0px rgba(0, 0, 0, 0.1);
-    left: 18.8rem;
+    right:2.1em;
     top: .7rem;
     cursor: pointer;
     border-radius: 10px;
@@ -89,7 +89,7 @@
 
 .save {
     position: absolute;
-    right: 1rem;
+    right: .2rem;
     top: .6rem;
     color: green;
     font-size: 1.35rem;
@@ -181,4 +181,11 @@
     /* border: 1px solid blue; */
     padding-inline:.5rem;
     margin-inline: .5rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.active{
+    background-color:blue !important;
+    color: black !important;
 }
