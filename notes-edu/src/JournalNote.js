@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './css/journal.css';
 import MonthFilter from './MonthFilter';
-
+import Import from './Import';
 
 /*
   -handlesave() handles the sava function
@@ -24,6 +24,7 @@ const JournalNote = ({ WelcomeDiv }) => {
     }
     const handleSave = (e, id) => {
         if (e.target.parentNode.nextSibling.value == '') {
+            e.preventDefault();
             showNotes(e);
             alert('Content Empty !!');
         } else {
@@ -44,24 +45,27 @@ const JournalNote = ({ WelcomeDiv }) => {
             // console.log(EditedData)
             // joining the previous data with new data
             const combinedData = EditedData.concat(ExistingData);
+            e.preventDefault();
             setJournalData(combinedData);
-            localStorage.setItem('journalData', JSON.stringify(combinedData))
+            localStorage.setItem('journalData', JSON.stringify(combinedData));
             alert('Content Saved!!')
             showNotes(e);
         }
 
     }
-    const addNewNotes = () => {
+    const addNewNotes = (e) => {
         const id = new Date().getTime();
         const date = new Date().toDateString();
         const note = '';
+        e.preventDefault();
         alert('Journal Added')
         const newNote = [{ id, date, note }];
         setJournalData(newNote.concat(journalData));
         localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)));
         // console.log(newNote)
     }
-    const handleRemove = (id) => {
+    const handleRemove = (id,e) => {
+        e.preventDefault();
         if (window.confirm('Do you Want To Delete ?')) {
             const removeData = journalData.filter((dataobj) => {
                 if (dataobj.id != id) {
@@ -136,8 +140,8 @@ const JournalNote = ({ WelcomeDiv }) => {
 
     }
     return (
-        <>
-            <WelcomeDiv />
+        <div className='journal-div'>
+            {/* <WelcomeDiv /> */}
             <div className="new-btn container">
                 <input
                     type="text"
@@ -146,9 +150,10 @@ const JournalNote = ({ WelcomeDiv }) => {
                 />
                 <i
                     className="bi bi-file-earmark-plus-fill"
-                    onClick={() => addNewNotes()}
+                    onClick={(e) => addNewNotes(e)}
                 ></i>
             </div>
+            <Import journalData = {journalData} setJournalData ={setJournalData} />
             <MonthFilter handleFilter={handleFilter} />
             <div className="container">
                 {journalData.length > 0
@@ -161,7 +166,7 @@ const JournalNote = ({ WelcomeDiv }) => {
                                         <p onClick={(e) => showNotes(e)}>{data.date}
                                             <i
                                                 className="bi bi-trash remove"
-                                                onClick={() => handleRemove(data.id)}
+                                                onClick={(e) => handleRemove(data.id ,e)}
                                             ></i>
 
                                         </p>
@@ -199,7 +204,7 @@ const JournalNote = ({ WelcomeDiv }) => {
                 }
             </div >
 
-        </>
+        </div>
     )
 }
 

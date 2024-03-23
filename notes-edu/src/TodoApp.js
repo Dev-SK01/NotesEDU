@@ -54,7 +54,7 @@ const ListItem = ({ ItemObj, handleDelete, handlechange }) => {
                                     <span className="un-done">{item.UnDone}</span>
                                 </div> */}
                                 <button className='list-btn'
-                                    onClick={() => (handleDelete(item.id))}>
+                                    onClick={(e) => (handleDelete(item.id ,e))}>
                                     <i className="bi bi-bookmark-x-fill"></i>
                                 </button>
 

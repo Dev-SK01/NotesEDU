@@ -29,7 +29,8 @@ function Notes_EDU_APP() {
         localStorage.setItem('ListData', JSON.stringify(list_item))
     }
 
-    function handleDelete(id) {
+    function handleDelete(id , e) {
+        e.preventDefault();
         const list_item = itemobj.filter((item) => (
             item.id != id
         ))
@@ -121,6 +122,7 @@ function Notes_EDU_APP() {
                     <div className="welcome-img">
                     </div>
                 </div>
+                
             </>
         )
     }

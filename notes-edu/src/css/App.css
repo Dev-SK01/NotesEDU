@@ -4,7 +4,6 @@
   text-align: center;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -16,7 +15,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(1.5px);
   padding-bottom: 1rem;
 }
@@ -27,25 +26,23 @@
   background-size: cover;
   background-position: center;
   background-clip: border-box;
-  position: relative;
-  top: 0;
+  height: 30vh;
 }
 
 /* ---------------------------- Routing division----------------- */
 .router {
-  display: flex;
-  justify-content: space-between;
-  padding-inline: 1rem;
   position: relative;
   z-index: 10;
-  /* padding-top: 1rem; */
-  padding-block: 1.5rem;
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(1.5px);
   border-bottom: solid 10px blue;
   border-bottom-left-radius: 27px;
   border-bottom-right-radius: 27px;
+  height: 9.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
 }
 
@@ -61,10 +58,13 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
 }
 
 .router p {
   margin-bottom: .6rem;
+  text-align: center;
+  margin-inline: 0.3rem;
 }
 
 .counts {
@@ -275,7 +275,7 @@
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  height: 45vh;
+  height: 35vh;
   margin-inline: 10px;
   overflow-y: scroll;
 }
