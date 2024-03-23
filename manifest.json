@@ -19,16 +19,20 @@
     }
   ],
   "start_url": "https://dev-sk01.github.io/NotesEDU",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "id": "NE",
+  "id": "V2.0.0",
   "description": "It A reatime Journal noting and task adding APP .It is a productive App",
   "dir": "auto",
   "lang": "en",
   "categories": [
     "personalization",
     "utilities"
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
   ],
   "shortcuts": [
     {
