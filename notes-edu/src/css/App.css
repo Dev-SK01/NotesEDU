@@ -21,9 +21,10 @@
 }
 
 .main-nav {
-  background-image: url('../assets/Ecosystem-bro.svg');
+  /* background-image: url('../assets/Ecosystem-bro.svg'); */
+  background-image: url('../assets/time-flies-bro.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-clip: border-box;
   height: 30vh;
@@ -39,7 +40,7 @@
   border-bottom: solid 10px blue;
   border-bottom-left-radius: 27px;
   border-bottom-right-radius: 27px;
-  height: 9.1rem;
+  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,13 +123,8 @@
   padding-inline: .5rem;
   border-radius: 5px;
   position: relative;
-  /* background: #e0e0e0;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgb(255, 255, 255);
-  box-shadow: 0px 4px 18px 0px rgb(255, 254, 254);
-  border-radius: 10px;
-  border: 1px solid rgb(255, 255, 255); */
-  margin-bottom: .5rem;
+  padding-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .List-form input[type=text] {
@@ -275,7 +271,7 @@
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  height: 35vh;
+  height: 49.5vh;
   margin-inline: 10px;
   overflow-y: scroll;
 }
@@ -319,11 +315,10 @@
 }
 
 .celebration {
-  height: 150px;
+  height: 30vh;
   width: 100%;
   background-image: url('https://i.gifer.com/origin/1a/1af8d3b487b77085d5288814f151e1de_w200.gif');
   position: absolute;
-  top: 10%;
 }
 
 .list-btn {

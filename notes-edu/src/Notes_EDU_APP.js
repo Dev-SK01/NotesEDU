@@ -29,7 +29,7 @@ function Notes_EDU_APP() {
         localStorage.setItem('ListData', JSON.stringify(list_item))
     }
 
-    function handleDelete(id , e) {
+    function handleDelete(id, e) {
         e.preventDefault();
         const list_item = itemobj.filter((item) => (
             item.id != id
@@ -107,28 +107,28 @@ function Notes_EDU_APP() {
             <>
                 <div className="welcome-div">
                     {/* celebration div */}
-                    <div className="celebration" id='celebration'
-                        style={((itemobj.map((item) => (item.checked))) ?
-                            { display: "block" } :
-                            { display: "none" })}>
+                    <div className="celebration" id='celebration'>
 
                     </div>
                     <div className="welcome-text">
-                        <p contentEditable = "true">Hello👋</p>
+                        <p contentEditable="true">Hello👋</p>
                     </div>
                     <div className="welcome-icon">
-                        <p contentEditable = "true">Buddy,</p>
+                        <p contentEditable="true">Buddy,</p>
                     </div>
                     <div className="welcome-img">
                     </div>
                 </div>
-                
+
             </>
         )
     }
     return (
         <>
             <section className='main-nav'>
+                <div className="celebration" id='celebration'>
+
+                </div>
                 <header className='header'>
                     <h1 style={{ fontSize: '2rem', fontWeight: 'bolder' }}>Notes Edu</h1>
                 </header>
@@ -146,7 +146,7 @@ function Notes_EDU_APP() {
                     element={
                         <>
                             {/* AddList Component */}
-                            <WelcomeDiv />
+                            {/* <WelcomeDiv /> */}
                             <AddListElement />
                             <section className='Content'>
                                 <ListItem

@@ -5,13 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-block: .5rem;
+    padding-block: .8rem;
     margin-inline: .2em;
 }
 
 .json-container span {
     font-family: 'Playfair Display';
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: bolder;
     color: white;
     background: blue;
