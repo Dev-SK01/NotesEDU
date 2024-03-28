@@ -7,7 +7,7 @@
 
 .journal-div {
     height: 70vh;
-    padding-top: .5rem;
+    padding-top: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -91,14 +91,15 @@
     position: relative;
     display: flex;
     background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
-        0px 4px 18px 0px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
+        0px 4px 18px 0px rgba(0, 0, 0, 0.1); */
     backdrop-filter: blur(3.5px);
     -webkit-backdrop-filter: blur(3.5px);
     border-radius: 10px;
     margin-bottom: 1rem;
     height: 65px;
     z-index: 10;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1),0px -5px 10px 0px rgba(0,0,0,0.1);
 }
 
 .smallnote {

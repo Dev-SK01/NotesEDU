@@ -116,7 +116,7 @@ const Import = ({ journalData, setJournalData }) => {
                 }
             } catch (error) {
     
-                output.textContent = "It's NOot A NotesEDU File Export and Upload...  ";
+                output.textContent = "Please Export Then Upload the JSON File.... ";
                 setTimeout(() => {
                     output.style.display = 'block';
     
@@ -131,7 +131,7 @@ const Import = ({ journalData, setJournalData }) => {
     }
     return (
         <>
-            <div class="json-container">
+            <div className="json-container">
                 <input type="file" id="fileUpload" accept=".json" />
                 <span id="import-btn" onClick={() => (importData())}>Import</span>
                 <span id="export-btn" onClick={() => (exportData(journalData))}>Export</span>

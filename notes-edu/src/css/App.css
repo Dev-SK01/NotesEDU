@@ -28,6 +28,28 @@
   background-position: center;
   background-clip: border-box;
   height: 30vh;
+  text-align: center;
+}
+
+.quote {
+  position: absolute;
+  z-index: 9999999;
+  top: 10rem;
+  text-align: center;
+  font-weight: 800;
+  width: 100%;
+  font-size: 1.2rem;
+  /* background: #10F3FF;
+  background: repeating-radial-gradient(ellipse farthest-side at center center, #10F3FF 0%, #FF84FD 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  background: #10F3FF;
+  background: repeating-radial-gradient(ellipse farthest-side at top center, #10F3FF 0%, #FF84FD 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+
 }
 
 /* ---------------------------- Routing division----------------- */
@@ -40,9 +62,9 @@
   border-bottom: solid 10px blue;
   border-bottom-left-radius: 27px;
   border-bottom-right-radius: 27px;
-  height: 20vh;
+  height: 22vh;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
 
 }
@@ -63,7 +85,7 @@
 }
 
 .router p {
-  margin-bottom: .6rem;
+  margin-block: 1.5rem;
   text-align: center;
   margin-inline: 0.3rem;
 }

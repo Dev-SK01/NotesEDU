@@ -9,10 +9,10 @@ import Import from './Import';
   -handleremove() handles daleting notes function
 */
 
-const JournalNote = ({ WelcomeDiv }) => {
+const JournalNote = () => {
     // getting the data from localstorage
     const parsedJournal = JSON.parse(localStorage.getItem('journalData'));
-    console.log(parsedJournal);
+    // console.log(parsedJournal);
     const [journalData, setJournalData] = useState(parsedJournal || [])
     const showNotes = (e) => {
         // console.dir(e.target.parentNode.nextSibling)
@@ -23,6 +23,7 @@ const JournalNote = ({ WelcomeDiv }) => {
         }
     }
     const handleSave = (e, id) => {
+        let combinedData ;
         if (e.target.parentNode.nextSibling.value == '') {
             e.preventDefault();
             showNotes(e);
@@ -44,14 +45,38 @@ const JournalNote = ({ WelcomeDiv }) => {
             })
             // console.log(EditedData)
             // joining the previous data with new data
-            const combinedData = EditedData.concat(ExistingData);
+             combinedData = EditedData.concat(ExistingData);
             e.preventDefault();
             setJournalData(combinedData);
             localStorage.setItem('journalData', JSON.stringify(combinedData));
             alert('Content Saved!!')
             showNotes(e);
         }
+    }
 
+    const saveDataOnChange = (e,id) =>{
+        let combinedData ;
+        // finding the existing data
+            const ExistingData = journalData.filter((journal) => {
+                if (journal.id != id) {
+                    return journal
+                }
+            })
+            // console.log(ExistingData)
+            // Handles the while the data is edited & finds the edited data
+            const EditedData = journalData.filter((data) => {
+                let Edited = e.target.value;
+                if (data.id == id) {
+                    data.note = Edited;
+                    return data
+                }
+            })
+            // console.log(EditedData)
+            // joining the previous data with new data
+            combinedData = EditedData.concat(ExistingData);
+            localStorage.setItem('journalData', JSON.stringify(combinedData));
+            setJournalData(combinedData);
+        
     }
     const addNewNotes = (e) => {
         const id = new Date().getTime();
@@ -64,7 +89,7 @@ const JournalNote = ({ WelcomeDiv }) => {
         localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)));
         // console.log(newNote)
     }
-    const handleRemove = (id,e) => {
+    const handleRemove = (id, e) => {
         e.preventDefault();
         if (window.confirm('Do you Want To Delete ?')) {
             const removeData = journalData.filter((dataobj) => {
@@ -112,16 +137,17 @@ const JournalNote = ({ WelcomeDiv }) => {
         e.target.classList = "active";
         // logic for finding the array with classname == active
         const child = e.target.parentNode.childNodes;
-        const filteredChild =[];
+        const filteredChild = [];
         // finding the array with classname == active
         for (var i = 0; i <= child.length - 1; i++) {
             if (child[i].className == 'active') {
                 filteredChild.push(child[i]);
-            }};
+            }
+        };
         // setting the element classname == '';
-        filteredChild.forEach((arr)=>{
-            if(arr !== e.target){
-                arr.className ="";
+        filteredChild.forEach((arr) => {
+            if (arr !== e.target) {
+                arr.className = "";
             }
         });
         // console.log(filteredChild.length)
@@ -153,28 +179,30 @@ const JournalNote = ({ WelcomeDiv }) => {
                     onClick={(e) => addNewNotes(e)}
                 ></i>
             </div>
-            <Import journalData = {journalData} setJournalData ={setJournalData} />
+            <Import journalData={journalData} setJournalData={setJournalData} />
             <MonthFilter handleFilter={handleFilter} />
             <div className="container">
                 {journalData.length > 0
                     ?
-                    <div className="journal-container" >
-                        <div div className="journal" key={journalData.id}>
+                    <div className="journal-container"  >
+                        <div  className="journal" >
                             {journalData.map((data) => (
-                                <>
-                                    <div className='title'>
+                                <div key={data.id}>
+                                    <div className='title' >
                                         <p onClick={(e) => showNotes(e)}>{data.date}
                                             <i
                                                 className="bi bi-trash remove"
-                                                onClick={(e) => handleRemove(data.id ,e)}
+                                                onClick={(e) => handleRemove(data.id, e)}
+
                                             ></i>
 
                                         </p>
                                         <i
                                             className="bi bi-check2-circle save"
                                             onClick={(e) => handleSave(e, data.id)}
+
                                         ></i>
-                                        <span className='smallnote'>
+                                        <span className='smallnote' >
                                             {data.note.slice(0, 50)}<br />
                                             {data.note.slice(50, 100)}<br />
                                         </span>
@@ -187,20 +215,21 @@ const JournalNote = ({ WelcomeDiv }) => {
                                         autoCapitalize='on'
                                         autoCorrect='on'
                                         placeholder='Enter Your Notes Here....'
-                                        key={data.id}
+                                        value={data.note}
+                                        onChange={(e)=>(saveDataOnChange(e,data.id))}
                                     >
-                                        {data.note}
+                                        
                                     </textarea>
-                                </>
+                                </div>
                             ))}
                         </div>
                     </div>
                     // showing the error message if there is no list
                     :
-                    (<div className="empty-list">
+                    <div className="empty-list">
                         <i className="bi bi-emoji-dizzy-fill"></i>
-                        <p>Your  Notes are Empty ):</p>
-                    </div>)
+                        <p>Your  Notes are Empty ^_^</p>
+                    </div>
                 }
             </div >
 

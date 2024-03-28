@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react'
 import { ListItem } from './TodoApp';
 import './css/App.css'
 import { Footer } from './Footer';
-import { Link, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import JournalNote from './JournalNote';
+import Header from './Header';
 
 // Getting the data from local storage
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
@@ -125,18 +126,7 @@ function Notes_EDU_APP() {
     }
     return (
         <>
-            <section className='main-nav'>
-                <div className="celebration" id='celebration'>
-
-                </div>
-                <header className='header'>
-                    <h1 style={{ fontSize: '2rem', fontWeight: 'bolder' }}>Notes Edu</h1>
-                </header>
-                <div className="router">
-                    <p><Link to='NotesEDU/journal'>Journal APP</Link></p>
-                    <p><Link to='NotesEDU/todo'>Todo APP</Link></p>
-                </div>
-            </section>
+           <Header />
             <Routes>
                 {/* todo App Route */}
                 <Route path="NotesEDU"
@@ -164,7 +154,7 @@ function Notes_EDU_APP() {
                 </Route>
                 {/* Journal App Route */}
                 <Route path='NotesEDU/journal'
-                    element={<JournalNote WelcomeDiv={WelcomeDiv} />}
+                    element={<JournalNote  />}
                 ></Route>
 
             </Routes>
