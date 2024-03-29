@@ -1,8 +1,8 @@
 import React from 'react';
 import './css/import.css';
-const Import = ({ journalData, setJournalData }) => {
+const Import = ({ journalData, setJournalData , Storage }) => {
 
-
+console.log(Storage);
     // function Export 
     function exportData(data) {
         console.log(data);
@@ -15,7 +15,11 @@ const Import = ({ journalData, setJournalData }) => {
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            link.download = "NotesEDU.json";
+            if(Storage == 'journalData'){
+                link.download = "JournalData.json";
+            }else{
+                link.download = "ToDoData.json";
+            }
             output.textContent = "Your Data Exported! See Your Downloads Folder!";
             link.click();
 
@@ -100,7 +104,7 @@ const Import = ({ journalData, setJournalData }) => {
                         setJournalData(TotalJournalData);
             
                         output.textContent = "Data Imported !";
-                        localStorage.setItem('journalData', JSON.stringify(TotalJournalData));
+                        localStorage.setItem(`${Storage}`, JSON.stringify(TotalJournalData));
                         setTimeout(() => {
                             output.style.display = 'block';
             
@@ -112,7 +116,7 @@ const Import = ({ journalData, setJournalData }) => {
                     // No data found setting the data
                 } else {
                     setJournalData(jsonData);
-                    localStorage.setItem('journalData', JSON.stringify(jsonData))
+                    localStorage.setItem(`${Storage}`, JSON.stringify(jsonData))
                 }
             } catch (error) {
     

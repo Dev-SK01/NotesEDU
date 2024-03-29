@@ -179,7 +179,7 @@ const JournalNote = () => {
                     onClick={(e) => addNewNotes(e)}
                 ></i>
             </div>
-            <Import journalData={journalData} setJournalData={setJournalData} />
+            <Import journalData={journalData} setJournalData={setJournalData} Storage ="journalData" />
             <MonthFilter handleFilter={handleFilter} />
             <div className="container">
                 {journalData.length > 0

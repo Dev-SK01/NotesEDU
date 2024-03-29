@@ -5,6 +5,7 @@ import { Footer } from './Footer';
 import {  Route, Routes } from 'react-router-dom';
 import JournalNote from './JournalNote';
 import Header from './Header';
+import Import from './Import';
 
 // Getting the data from local storage
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
@@ -135,9 +136,8 @@ function Notes_EDU_APP() {
                 <Route path='NotesEDU/todo'
                     element={
                         <>
-                            {/* AddList Component */}
-                            {/* <WelcomeDiv /> */}
                             <AddListElement />
+                            <Import journalData = {itemobj} setJournalData={setItem}  Storage ="ListData"/>
                             <section className='Content'>
                                 <ListItem
                                     ItemObj={itemobj}

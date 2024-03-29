@@ -24,7 +24,7 @@ const Header = () => {
             </div>
             {/* <h1 style={{ fontSize: '2rem', fontWeight: 'bolder' }}>Notes Edu</h1> */}
             <svg>
-                <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                <text x="50%" y="50%" dy=".35em" textAnchor="middle">
                     Notes EDU
                 </text>
             </svg>

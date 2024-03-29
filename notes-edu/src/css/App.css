@@ -23,9 +23,9 @@
 
 .main-nav {
   /* background-image: url('../assets/Ecosystem-bro.svg'); */
-  background-image: url('../assets/time-flies-bro.svg');
+  background-image: url('../assets/Meditation-bro.svg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-clip: border-box;
   height: 30vh;
@@ -40,22 +40,14 @@
   font-weight: 800;
   width: 100%;
   font-size: 1.2rem;
-  /* background: #10F3FF;
-  background: repeating-radial-gradient(ellipse farthest-side at center center, #10F3FF 0%, #FF84FD 95%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  /* background: #10F3FF;
-  background: repeating-radial-gradient(ellipse farthest-side at top center, #10F3FF 0%, #FF84FD 95%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  background: #121FCF;
+  /* background: #121FCF;
   background: repeating-radial-gradient(ellipse farthest-side at bottom right, #121FCF 58%, #919EFF 92%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background: #121FCF;
+  -webkit-text-fill-color: transparent; */
+  /* background: #121FCF;
   background: repeating-linear-gradient(to right, #121FCF 58%, #919EFF 92%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 
@@ -67,7 +59,7 @@ svg {
   backdrop-filter: blur(1.5px);
 }
 svg text {
-	animation: stroke 5s infinite alternate;
+	animation: stroke 2s infinite alternate;
 	stroke-width: 2;
 	stroke: #2908FF;
   font-size: 2rem;
@@ -94,8 +86,8 @@ svg text {
   /* box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1); */
   backdrop-filter: blur(1.5px);
   border-bottom: solid 10px blue;
-  border-bottom-left-radius: 27px;
-  border-bottom-right-radius: 27px;
+  /* border-bottom-left-radius: 27px;
+  border-bottom-right-radius: 27px; */
   height: 22vh;
   display: flex;
   /* align-items: center; */
@@ -179,7 +171,7 @@ svg text {
   padding-inline: .5rem;
   border-radius: 5px;
   position: relative;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
