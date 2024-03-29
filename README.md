@@ -39,11 +39,11 @@ git clone https://github.com/Dev-SK01/NotedEDU.git
 ```
 - Move to the cloned Directory
 ```bash
-cd NotedEDU 
+cd notes-edu 
 ```
 - Use npm to install all dependencies
 ```bash
- npm install
+ npm install 
 ```
 - To Run 
 ```bash
