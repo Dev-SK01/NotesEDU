@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './css/App.css'
+
 const Header = () => {
     const [quote, setQuote] = useState('Loading......');
     console.log(quote);
     async function getQuotes() {
         try {
-            const API_URL = 'https://api.adviceslip.com/advice'
+            const API_URL = 'https://api.adviceslip.com/advice';
             const response = await fetch(API_URL);
             const data = await response.json();
             // console.log(data.slip.advice)
-            setQuote(data.slip.advice);
+            setQuote(data.slip.advice || 'No Quote Found!');
         } catch (err) {
             setQuote(err);
         }

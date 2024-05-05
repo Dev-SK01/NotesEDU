@@ -6,6 +6,7 @@ import {  Route, Routes } from 'react-router-dom';
 import JournalNote from './JournalNote';
 import Header from './Header';
 import Import from './Import';
+import confetti from 'canvas-confetti';
 
 // Getting the data from local storage
 const ParsedLocalList = JSON.parse(localStorage.getItem('ListData'));
@@ -61,6 +62,11 @@ function Notes_EDU_APP() {
             };
             const addListData = [...itemobj, NewListData];
             // ListData.push(NewListData);
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+              });
             setItem(addListData);
             localStorage.setItem('ListData', JSON.stringify(addListData));
         }
@@ -70,6 +76,11 @@ function Notes_EDU_APP() {
             // adding the list to the ListData Object
             alert('List Added')
             setInputData(listItem)
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+              });
             // clearing the input after list added
             setListItem('');
         }
@@ -158,9 +169,7 @@ function Notes_EDU_APP() {
                 ></Route>
 
             </Routes>
-
-
-
+                        
         </>
     )
 

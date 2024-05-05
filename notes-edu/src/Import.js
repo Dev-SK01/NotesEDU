@@ -1,8 +1,25 @@
 import React from 'react';
 import './css/import.css';
-const Import = ({ journalData, setJournalData , Storage }) => {
+import confetti from 'canvas-confetti'
+const Import = ({ journalData, setJournalData, Storage }) => {
 
-console.log(Storage);
+    console.log(Storage);
+// reset function for the ToDoApp to reset all  todo 
+    function resetTododata() {
+       const data =  journalData.map((data) => {
+        // code for  reset the data for the checked = alse
+            data.checked = false;
+            console.log(data);
+            return data
+        });
+        confetti({
+            particleCount: 150,
+            spread: 90,
+            origin: { y: 0.6 },
+          });
+        setJournalData(data);
+        localStorage.setItem('ListData' , JSON.stringify(data))
+    }
     // function Export 
     function exportData(data) {
         console.log(data);
@@ -15,11 +32,16 @@ console.log(Storage);
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.href = url;
-            if(Storage == 'journalData'){
+            if (Storage == 'journalData') {
                 link.download = "JournalData.json";
-            }else{
+            } else {
                 link.download = "ToDoData.json";
             }
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+              });
             output.textContent = "Your Data Exported! See Your Downloads Folder!";
             link.click();
 
@@ -27,10 +49,10 @@ console.log(Storage);
             setTimeout(() => {
                 output.style.display = 'block';
 
-            },1);
-            setInterval(()=>{
+            }, 1);
+            setInterval(() => {
                 output.style.display = 'none'
-            },3000)
+            }, 3000)
         }
 
     }
@@ -47,10 +69,10 @@ console.log(Storage);
             setTimeout(() => {
                 output.style.display = 'block';
 
-            },1);
-            setInterval(()=>{
+            }, 1);
+            setInterval(() => {
                 output.style.display = 'none'
-            },3000)
+            }, 3000)
             return;
         }
 
@@ -60,10 +82,10 @@ console.log(Storage);
             setTimeout(() => {
                 output.style.display = 'block';
 
-            },1);
-            setInterval(()=>{
+            }, 1);
+            setInterval(() => {
                 output.style.display = 'none'
-            },3000)
+            }, 3000)
             return;
         }
 
@@ -90,55 +112,80 @@ console.log(Storage);
                     // console.log(isSameData);
                     // based on the isSameData result ;
                     if (isSameData) {
-            
+
                         output.textContent = "Same Data Imported"; // Format for readability
                         setTimeout(() => {
                             output.style.display = 'block';
-            
-                        },1);
-                        setInterval(()=>{
+
+                        }, 1);
+                        setInterval(() => {
                             output.style.display = 'none'
-                        },3000)
+                        }, 3000)
                     } else {
                         const TotalJournalData = [...journalData, ...jsonData];
                         setJournalData(TotalJournalData);
-            
+                        confetti({
+                            particleCount: 100,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                          });
                         output.textContent = "Data Imported !";
                         localStorage.setItem(`${Storage}`, JSON.stringify(TotalJournalData));
                         setTimeout(() => {
                             output.style.display = 'block';
-            
-                        },1);
-                        setInterval(()=>{
+
+                        }, 1);
+                        setInterval(() => {
                             output.style.display = 'none'
-                        },3000)
+                        }, 3000)
                     }
                     // No data found setting the data
                 } else {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                      });
                     setJournalData(jsonData);
                     localStorage.setItem(`${Storage}`, JSON.stringify(jsonData))
                 }
             } catch (error) {
-    
+
                 output.textContent = "Please Export Then Upload the JSON File.... ";
                 setTimeout(() => {
                     output.style.display = 'block';
-    
-                },1);
-                setInterval(()=>{
+
+                }, 1);
+                setInterval(() => {
                     output.style.display = 'none'
-                },3000);
+                }, 3000);
             }
         };
 
         reader.readAsText(selectedFile);
     }
+
+    // Return Statement for the entire import data container.
     return (
         <>
             <div className="json-container">
                 <input type="file" id="fileUpload" accept=".json" />
-                <span id="import-btn" onClick={() => (importData())}>Import</span>
-                <span id="export-btn" onClick={() => (exportData(journalData))}>Export</span>
+                {
+                    Storage !== 'journalData' ?  
+                        <>
+                            <span id="import-btn" onClick={() => (resetTododata())}>Reset</span>
+                            <span id="import-btn" onClick={() => (importData())}>Import</span>
+                            <span id="export-btn" onClick={() => (exportData(journalData))}>Export</span>
+                        </>
+                     :
+                        <>
+                            <span id="import-btn" onClick={() => (importData())}>Import</span>
+                            <span id="export-btn" onClick={() => (exportData(journalData))}>Export</span>
+                        </>
+
+
+                }
+
             </div>
             <pre id="output"></pre>
         </>

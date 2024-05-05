@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './css/journal.css';
 import MonthFilter from './MonthFilter';
 import Import from './Import';
-
+import confetti from 'canvas-confetti';
 /*
   -handlesave() handles the sava function
   -addNotes() handles the new note
@@ -49,6 +49,11 @@ const JournalNote = () => {
             e.preventDefault();
             setJournalData(combinedData);
             localStorage.setItem('journalData', JSON.stringify(combinedData));
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+              });
             alert('Content Saved!!')
             showNotes(e);
         }
@@ -86,6 +91,11 @@ const JournalNote = () => {
         alert('Journal Added')
         const newNote = [{ id, date, note }];
         setJournalData(newNote.concat(journalData));
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
         localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)));
         // console.log(newNote)
     }
@@ -110,7 +120,7 @@ const JournalNote = () => {
         const searchedData = parsedJournal.filter((searchjournal) => {
             let searchdata = e.target.value.toString().toLowerCase().trim() ?? 'Test';
             if (searchdata == "") {
-                searchdata = 'no Data';
+                searchdata = 'No Relative Results Found...';
             }
             else {
                 searchdata = searchdata;
@@ -154,12 +164,22 @@ const JournalNote = () => {
         // console.log(child.length)
         if (month === "ALL") {
             setJournalData(parsedJournal)
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+              });
         } else {
             const filteredMonth = parsedJournal.filter((data) => {
                 if (data.date.toLowerCase().includes(month.toLowerCase()) == true) {
                     return data
                 }
             });
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+              });
             setJournalData(filteredMonth);
         }
 
@@ -228,7 +248,7 @@ const JournalNote = () => {
                     :
                     <div className="empty-list">
                         <i className="bi bi-emoji-dizzy-fill"></i>
-                        <p>Your  Notes are Empty ^_^</p>
+                        <p>Your  Notes are Empty ^_^ </p>
                     </div>
                 }
             </div >

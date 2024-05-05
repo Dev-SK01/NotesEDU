@@ -11,7 +11,7 @@ const MonthFilter = ({handleFilter}) => {
        <span onClick={(e)=>(handleFilter(e))}>APR</span>
        <span onClick={(e)=>(handleFilter(e))}>MAY</span>
        <span onClick={(e)=>(handleFilter(e))}>JUN</span>
-       <span onClick={(e)=>(handleFilter(e))}>JULY</span>
+       <span onClick={(e)=>(handleFilter(e))}>JUL</span>
        <span onClick={(e)=>(handleFilter(e))}>AUG</span>
        <span onClick={(e)=>(handleFilter(e))}>SEP</span>
        <span onClick={(e)=>(handleFilter(e))}>OCT</span>
@@ -22,4 +22,4 @@ const MonthFilter = ({handleFilter}) => {
   )
 }
 
-export default MonthFilter
+export default MonthFilter // g
