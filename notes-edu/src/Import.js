@@ -59,7 +59,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
 
     // function for Import Json Data
     function importData() {
-        // getting the json data uploaded by the user
+        // getting the json data uploaded by the Client
         const fileUpload = document.getElementById("fileUpload");
         const output = document.getElementById("output");
         const selectedFile = fileUpload.files[0];
@@ -93,7 +93,9 @@ const Import = ({ journalData, setJournalData, Storage }) => {
         console.log(reader);
         reader.onload = (event) => {
             try {
+                // parding the data 
                 const jsonData = JSON.parse(event.target.result);
+                // checking the data if the data id\s same or not 
                 let isSameData;
                 console.log(jsonData);
                 console.log(event);
@@ -102,6 +104,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
                     // checking the same data imported
                     jsonData.forEach((data) => {
                         journalData.forEach((localData) => {
+                            // checking the data by id if same or not 
                             if (data.id == localData.id) {
                                 isSameData = true;
                             } else {
@@ -113,7 +116,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
                     // based on the isSameData result ;
                     if (isSameData) {
 
-                        output.textContent = "Same Data Imported"; // Format for readability
+                        output.textContent = "Same Data Imported!!"; // Format for readability
                         setTimeout(() => {
                             output.style.display = 'block';
 
@@ -122,6 +125,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
                             output.style.display = 'none'
                         }, 3000)
                     } else {
+                        // code for joining the imported data and previous data
                         const TotalJournalData = [...journalData, ...jsonData];
                         setJournalData(TotalJournalData);
                         confetti({
@@ -131,6 +135,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
                           });
                         output.textContent = "Data Imported !";
                         localStorage.setItem(`${Storage}`, JSON.stringify(TotalJournalData));
+                        // code for pop up about the status of the imported data
                         setTimeout(() => {
                             output.style.display = 'block';
 
@@ -139,7 +144,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
                             output.style.display = 'none'
                         }, 3000)
                     }
-                    // No data found setting the data
+                // No data found setting the data
                 } else {
                     confetti({
                         particleCount: 100,
@@ -171,6 +176,7 @@ const Import = ({ journalData, setJournalData, Storage }) => {
             <div className="json-container">
                 <input type="file" id="fileUpload" accept=".json" />
                 {
+                // checking the appication for show thereset btn
                     Storage !== 'journalData' ?  
                         <>
                             <span id="import-btn" onClick={() => (resetTododata())}>Reset</span>

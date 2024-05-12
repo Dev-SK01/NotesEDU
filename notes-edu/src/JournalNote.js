@@ -187,7 +187,6 @@ const JournalNote = () => {
     }
     return (
         <div className='journal-div'>
-            {/* <WelcomeDiv /> */}
             <div className="new-btn container">
                 <input
                     type="text"
