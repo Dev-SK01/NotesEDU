@@ -3,6 +3,7 @@ import '../css/journal.css';
 import MonthFilter from './MonthFilter';
 import Import from './Import';
 import confetti from 'canvas-confetti';
+import DayStatus from './DayStatus';
 /*
   -handlesave() handles the sava function
   -addNotes() handles the new note
@@ -69,7 +70,7 @@ const JournalNote = () => {
         let Edited = e.target.value;
         const EditedData = journalData.filter((data) => {
             if (data.id === id) {
-                data.note = Edited ;
+                data.note = Edited;
                 return data
             }
         })
@@ -77,11 +78,11 @@ const JournalNote = () => {
         // joining the previous data with new data
         combinedData = EditedData.concat(ExistingData);
         setJournalData(combinedData);
-        
+
     }
-    function addNumberOnEnter(e,id){
+    function addNumberOnEnter(e, id) {
         let enteredString = e.target.value;
-        if(e.code === 'Enter'){
+        if (e.keyCode === 13) {
             // checking if the enter key is pressed
             let splittedString = enteredString.split('\n');
             enteredString = '';
@@ -99,7 +100,7 @@ const JournalNote = () => {
             // Handles the while the data is edited & finds the edited data
             const EditedData = journalData.filter((data) => {
                 if (data.id === id) {
-                    data.note += enteredString ;
+                    data.note += enteredString;
                     return data
                 }
             });
@@ -115,7 +116,17 @@ const JournalNote = () => {
         const note = '';
         e.preventDefault();
         alert('Journal Added')
-        const newNote = [{ id, date, note }];
+        const newNote = [{
+            id,
+            date,
+            note,
+            status: {
+                happy: false,
+                productive: false,
+                nuetral: false,
+                sad: false
+            }
+        }];
         setJournalData(newNote.concat(journalData));
         confetti({
             particleCount: 100,
@@ -231,38 +242,78 @@ const JournalNote = () => {
                         <div className="journal" >
                             {journalData.map((data) => (
                                 <div key={data.id}>
-                                    <div className='title' >
-                                        <p onClick={(e) => showNotes(e)}>{data.date}
-                                            <i
-                                                className="bi bi-trash remove"
-                                                onClick={(e) => handleRemove(data.id, e)}
+                                {/* condidition checking for data has Status prop */}
+                                    {data.status ?
+                                        <>
+                                            <DayStatus />
+                                            <div className='title' >
+                                                <p onClick={(e) => showNotes(e)}>{data.date}
+                                                    <i
+                                                        className="bi bi-trash remove"
+                                                        onClick={(e) => handleRemove(data.id, e)}
 
-                                            ></i>
+                                                    ></i>
 
-                                        </p>
-                                        <i
-                                            className="bi bi-check2-circle save"
-                                            onClick={(e) => showNotes(e)}
-                                        ></i>
-                                        <span className='smallnote' >
-                                            {data.note.slice(0, 50)}<br />
-                                            {data.note.slice(50, 100)}<br />
-                                        </span>
-                                    </div>
-                                    <textarea
-                                        name="textarea"
-                                        id={data.id}
-                                        cols="20"
-                                        rows="10"
-                                        autoCapitalize='on'
-                                        autoCorrect='on'
-                                        placeholder='Enter Your Notes Here....'
-                                        value={data.note}
-                                        onChange={(e) => (saveDataOnChange(e, data.id))}
-                                        onKeyUp={(e) => addNumberOnEnter(e,data.id)}
-                                    >
+                                                </p>
+                                                <i
+                                                    className="bi bi-check2-circle save"
+                                                    onClick={(e) => showNotes(e)}
+                                                ></i>
+                                                <span className='smallnote' >
+                                                    {data.note.slice(0, 50)}<br />
+                                                    {data.note.slice(50, 100)}<br />
+                                                </span>
+                                            </div>
+                                            <textarea
+                                                name="textarea"
+                                                id={data.id}
+                                                cols="20"
+                                                rows="10"
+                                                autoCapitalize='on'
+                                                autoCorrect='on'
+                                                placeholder='Enter Your Notes Here....'
+                                                value={data.note}
+                                                onChange={(e) => (saveDataOnChange(e, data.id))}
+                                                onKeyUp={(e) => addNumberOnEnter(e, data.id)}
+                                            ></textarea>
+                                        </>
+                                        :
+                                        // else showing the default UI
+                                        <>
 
-                                    </textarea>
+                                            <div className='title' >
+                                                <p onClick={(e) => showNotes(e)}>{data.date}
+                                                    <i
+                                                        className="bi bi-trash remove"
+                                                        onClick={(e) => handleRemove(data.id, e)}
+
+                                                    ></i>
+
+                                                </p>
+                                                <i
+                                                    className="bi bi-check2-circle save"
+                                                    onClick={(e) => showNotes(e)}
+                                                ></i>
+                                                <span className='smallnote' >
+                                                    {data.note.slice(0, 50)}<br />
+                                                    {data.note.slice(50, 100)}<br />
+                                                </span>
+                                            </div>
+                                            <textarea
+                                                name="textarea"
+                                                id={data.id}
+                                                cols="20"
+                                                rows="10"
+                                                autoCapitalize='on'
+                                                autoCorrect='on'
+                                                placeholder='Enter Your Notes Here....'
+                                                value={data.note}
+                                                onChange={(e) => (saveDataOnChange(e, data.id))}
+                                                onKeyUp={(e) => addNumberOnEnter(e, data.id)}
+                                            ></textarea>
+                                        </>
+                                    }
+
                                 </div>
                             ))}
                         </div>
