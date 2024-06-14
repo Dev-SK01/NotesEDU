@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { ListItem } from './TodoApp';
+import { ListItem } from './components/TodoApp';
 import './css/App.css'
-import { Footer } from './Footer';
+import { Footer } from './components/Footer';
 import {  Route, Routes } from 'react-router-dom';
-import JournalNote from './JournalNote';
-import Header from './Header';
-import Import from './Import';
+import JournalNote from './components/JournalNote';
+import Header from './components/Header';
+import Import from './components/Import';
 import confetti from 'canvas-confetti';
 
 // Getting the data from local storage
@@ -22,7 +22,7 @@ function Notes_EDU_APP() {
    */
     const backToInput = useRef()
     const [itemobj, setItem] = useState(ParsedLocalList || [])
-
+// 
     function handlechange(id) {
         const list_item = itemobj.map((item) => (
             item.id === id ? { ...item, checked: !item.checked } : item))

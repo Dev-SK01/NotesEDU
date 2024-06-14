@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import './css/App.css'
+import '../css/App.css'
 
 const Header = () => {
     const [quote, setQuote] = useState('Loading......');
@@ -20,6 +20,7 @@ const Header = () => {
             
         } catch (err) {
             setQuote(err);
+ 
         }
 
     }

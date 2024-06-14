@@ -1,9 +1,9 @@
 import React from 'react';
-import './css/import.css';
+import '../css/import.css';
 import confetti from 'canvas-confetti'
 const Import = ({ journalData, setJournalData, Storage }) => {
 
-    console.log(Storage);
+    // console.log(Storage);
 // reset function for the ToDoApp to reset all  todo 
     function resetTododata() {
        const data =  journalData.map((data) => {

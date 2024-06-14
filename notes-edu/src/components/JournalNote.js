@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import './css/journal.css';
+import '../css/journal.css';
 import MonthFilter from './MonthFilter';
 import Import from './Import';
 import confetti from 'canvas-confetti';
 /*
   -handlesave() handles the sava function
   -addNotes() handles the new note
-  -handleremove() handles daleting notes function
+  -handleremove() handles deleting notes function
+  -saveDataOnChange() user enter thetext it automatically store the data
+  -addNumberOnEnter() adding the number infornt of new line created.
+  -handleSearch() handles the search funcitonality.
 */
 
 const JournalNote = () => {
@@ -23,7 +26,7 @@ const JournalNote = () => {
         }
     }
     const handleSave = (e, id) => {
-        let combinedData ;
+        let combinedData;
         if (e.target.parentNode.nextSibling.value == '') {
             e.preventDefault();
             showNotes(e);
@@ -34,7 +37,7 @@ const JournalNote = () => {
                     return journal
                 }
             })
-            // console.log(ExistingData)
+            // console.log(ExistingData) 
             // Handles the while the data is edited
             const EditedData = journalData.filter((data) => {
                 let Edited = e.target.parentNode.nextSibling.value;
@@ -45,23 +48,48 @@ const JournalNote = () => {
             })
             // console.log(EditedData)
             // joining the previous data with new data
-             combinedData = EditedData.concat(ExistingData);
+            combinedData = EditedData.concat(ExistingData);
             e.preventDefault();
             setJournalData(combinedData);
             localStorage.setItem('journalData', JSON.stringify(combinedData));
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-              });
             alert('Content Saved!!')
             showNotes(e);
         }
     }
-
-    const saveDataOnChange = (e,id) =>{
-        let combinedData ;
+    const saveDataOnChange = (e, id) => {
+        let combinedData;
         // finding the existing data
+        const ExistingData = journalData.filter((journal) => {
+            if (journal.id != id) {
+                return journal
+            }
+        })
+        // console.log(ExistingData)
+        // Handles the while the data is edited & finds the edited data
+        let Edited = e.target.value;
+        const EditedData = journalData.filter((data) => {
+            if (data.id === id) {
+                data.note = Edited ;
+                return data
+            }
+        })
+        // console.log(EditedData)
+        // joining the previous data with new data
+        combinedData = EditedData.concat(ExistingData);
+        setJournalData(combinedData);
+        
+    }
+    function addNumberOnEnter(e,id){
+        let enteredString = e.target.value;
+        if(e.code === 'Enter'){
+            // checking if the enter key is pressed
+            let splittedString = enteredString.split('\n');
+            enteredString = '';
+            // adding number inform of the \n 1.
+            enteredString += (`${splittedString.length - 1}.`);
+            // console.log(enteredString);
+            let combinedData;
+            // finding the existing data
             const ExistingData = journalData.filter((journal) => {
                 if (journal.id != id) {
                     return journal
@@ -70,18 +98,16 @@ const JournalNote = () => {
             // console.log(ExistingData)
             // Handles the while the data is edited & finds the edited data
             const EditedData = journalData.filter((data) => {
-                let Edited = e.target.value;
-                if (data.id == id) {
-                    data.note = Edited;
+                if (data.id === id) {
+                    data.note += enteredString ;
                     return data
                 }
-            })
-            // console.log(EditedData)
+            });
             // joining the previous data with new data
             combinedData = EditedData.concat(ExistingData);
             localStorage.setItem('journalData', JSON.stringify(combinedData));
             setJournalData(combinedData);
-        
+        }
     }
     const addNewNotes = (e) => {
         const id = new Date().getTime();
@@ -95,7 +121,7 @@ const JournalNote = () => {
             particleCount: 100,
             spread: 70,
             origin: { y: 0.6 }
-          });
+        });
         localStorage.setItem('journalData', JSON.stringify(newNote.concat(journalData)));
         // console.log(newNote)
     }
@@ -163,24 +189,22 @@ const JournalNote = () => {
         // console.log(filteredChild.length)
         // console.log(child.length)
         if (month === "ALL") {
-            setJournalData(parsedJournal)
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-              });
+            if (parsedJournal !== null) {
+                setJournalData(parsedJournal)
+            }
+
         } else {
-            const filteredMonth = parsedJournal.filter((data) => {
-                if (data.date.toLowerCase().includes(month.toLowerCase()) == true) {
-                    return data
-                }
-            });
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
-              });
-            setJournalData(filteredMonth);
+            if (parsedJournal !== null) {
+                const filteredMonth = parsedJournal.filter((data) => {
+                    // checking the month active using the date
+                    if (data.date.toLowerCase().includes(month.toLowerCase()) == true) {
+                        return data
+                    }
+                });
+                setJournalData(filteredMonth);
+            }
+
+
         }
 
 
@@ -198,13 +222,13 @@ const JournalNote = () => {
                     onClick={(e) => addNewNotes(e)}
                 ></i>
             </div>
-            <Import journalData={journalData} setJournalData={setJournalData} Storage ="journalData" />
+            <Import journalData={journalData} setJournalData={setJournalData} Storage="journalData" />
             <MonthFilter handleFilter={handleFilter} />
             <div className="container">
                 {journalData.length > 0
                     ?
                     <div className="journal-container"  >
-                        <div  className="journal" >
+                        <div className="journal" >
                             {journalData.map((data) => (
                                 <div key={data.id}>
                                     <div className='title' >
@@ -218,8 +242,7 @@ const JournalNote = () => {
                                         </p>
                                         <i
                                             className="bi bi-check2-circle save"
-                                            onClick={(e) => handleSave(e, data.id)}
-
+                                            onClick={(e) => showNotes(e)}
                                         ></i>
                                         <span className='smallnote' >
                                             {data.note.slice(0, 50)}<br />
@@ -235,9 +258,10 @@ const JournalNote = () => {
                                         autoCorrect='on'
                                         placeholder='Enter Your Notes Here....'
                                         value={data.note}
-                                        onChange={(e)=>(saveDataOnChange(e,data.id))}
+                                        onChange={(e) => (saveDataOnChange(e, data.id))}
+                                        onKeyUp={(e) => addNumberOnEnter(e,data.id)}
                                     >
-                                        
+
                                     </textarea>
                                 </div>
                             ))}
