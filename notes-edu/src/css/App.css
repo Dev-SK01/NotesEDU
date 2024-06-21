@@ -434,3 +434,9 @@ svg text {
     transform: rotate(360deg);
   }
 }
+
+.day-status{
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+}

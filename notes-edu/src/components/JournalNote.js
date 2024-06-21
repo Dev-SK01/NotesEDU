@@ -53,7 +53,6 @@ const JournalNote = () => {
             e.preventDefault();
             setJournalData(combinedData);
             localStorage.setItem('journalData', JSON.stringify(combinedData));
-            alert('Content Saved!!')
             showNotes(e);
         }
     }
@@ -220,6 +219,29 @@ const JournalNote = () => {
 
 
     }
+    function handleDayStatus(e) {
+        const statusId = Number(e.target.classList[0]);
+        const parentId = Number(e.target.parentNode.parentNode.id);
+        console.log(e.target.classList[0]);
+        const filteredJournalData = journalData.filter((data)=>{
+            if(data.id === parentId){
+                return data;
+            }
+        });
+        const dayStatus = statusId === 1 ? 'happy' : statusId === 2 ? 'productive' : statusId === 3 ? 'nuetral' : statusId === 4 ? 'sad' : '' ;
+        console.log(filteredJournalData ,dayStatus);
+        const existingData = journalData.filter((data)=>{
+            if(data.id !== parentId){
+                return data
+            }
+        });
+        filteredJournalData[0].status[dayStatus] = !filteredJournalData[0].status[dayStatus];
+        // console.log(filteredJournalData[0].status);
+        const combinedData = existingData.concat(filteredJournalData);
+        // console.log(combinedData);
+        localStorage.setItem('journalData', JSON.stringify(combinedData));
+        setJournalData(combinedData)
+      }
     return (
         <div className='journal-div'>
             <div className="new-btn container">
@@ -245,7 +267,7 @@ const JournalNote = () => {
                                 {/* condidition checking for data has Status prop */}
                                     {data.status ?
                                         <>
-                                            <DayStatus />
+                                            <DayStatus journalData ={data} handleDayStatus={handleDayStatus} />
                                             <div className='title' >
                                                 <p onClick={(e) => showNotes(e)}>{data.date}
                                                     <i
@@ -257,7 +279,7 @@ const JournalNote = () => {
                                                 </p>
                                                 <i
                                                     className="bi bi-check2-circle save"
-                                                    onClick={(e) => showNotes(e)}
+                                                    onClick={(e) => handleSave(e,data.id)}
                                                 ></i>
                                                 <span className='smallnote' >
                                                     {data.note.slice(0, 50)}<br />
@@ -292,7 +314,7 @@ const JournalNote = () => {
                                                 </p>
                                                 <i
                                                     className="bi bi-check2-circle save"
-                                                    onClick={(e) => showNotes(e)}
+                                                    onClick={(e) => handleSave(e,data.id)}
                                                 ></i>
                                                 <span className='smallnote' >
                                                     {data.note.slice(0, 50)}<br />

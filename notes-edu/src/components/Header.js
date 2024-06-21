@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/App.css'
 
@@ -14,17 +14,20 @@ const Header = () => {
               fetched data while the data is fechted from the Advice Slip API
             */
             const API_URL = 'https://api.adviceslip.com/advice'; 
-            const response = await fetch(API_URL);
+            const response = await fetch(API_URL) ;
             const data = await response.json();
+            console.log(data)
             setQuote(data.slip.advice || 'No Quote Found!');
             
         } catch (err) {
-            setQuote(err);
+            setQuote(err.message);
  
         }
 
     }
-    getQuotes();
+    useEffect(()=>{
+       getQuotes();
+    },[]);
     return (
         <section className='main-nav'>
             <div className="celebration" id='celebration'>
