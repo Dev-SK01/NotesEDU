@@ -197,5 +197,5 @@ const Import = ({ journalData, setJournalData, Storage }) => {
         </>
     )
 }
-
+React.memo(Import);
 export default Import

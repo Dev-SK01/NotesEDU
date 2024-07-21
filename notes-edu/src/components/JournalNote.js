@@ -237,7 +237,7 @@ const JournalNote = () => {
         });
         filteredJournalData[0].status[dayStatus] = !filteredJournalData[0].status[dayStatus];
         // console.log(filteredJournalData[0].status);
-        const combinedData = existingData.concat(filteredJournalData);
+        const combinedData = filteredJournalData.concat(existingData);
         // console.log(combinedData);
         localStorage.setItem('journalData', JSON.stringify(combinedData));
         setJournalData(combinedData)

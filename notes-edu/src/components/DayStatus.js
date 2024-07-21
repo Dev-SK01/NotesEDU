@@ -24,5 +24,5 @@ const DayStatus = ({ journalData, handleDayStatus }) => {
     </div>
   )
 }
-
+React.memo(DayStatus);
 export default DayStatus;

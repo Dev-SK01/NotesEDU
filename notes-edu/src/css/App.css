@@ -308,8 +308,6 @@ svg text {
 .list-div {
   margin-top: 0rem;
   background: #e0e0e0;
-  /* box-shadow: 20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff; */
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0px 4px 18px 0px rgba(0, 0, 0, 0.1),
@@ -319,9 +317,10 @@ svg text {
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  height: 49.5vh;
+  height: 42vh;
   margin-inline: 10px;
   overflow-y: scroll;
+  padding-bottom: 1rem;
 }
 
 .list-div ul {

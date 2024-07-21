@@ -51,5 +51,5 @@ const Header = () => {
 
     )
 }
-
+React.memo(Header);
 export default Header

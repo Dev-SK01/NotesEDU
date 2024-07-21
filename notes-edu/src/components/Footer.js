@@ -19,4 +19,6 @@ const Footer = ({react , length}) => {
 Footer.defaultProps = {
    react : 'Default Footer DIV'
 }
+
+React.memo(Footer);
 export  {Footer};

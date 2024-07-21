@@ -74,4 +74,5 @@ const ListItem = ({ ItemObj, handleDelete, handlechange }) => {
     )
 }
 
+React.memo(ListItem);
 export { ListItem };

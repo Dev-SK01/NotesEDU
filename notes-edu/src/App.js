@@ -14,5 +14,5 @@ function App() {
     </>
   );
 }
-
+React.memo(App);
 export default App;

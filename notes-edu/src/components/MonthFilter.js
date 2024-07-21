@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MonthFilter = ({handleFilter}) => {
-  const months = ['JAN' ,'FEB','MAR','APR','MAY','JUN','JULY','AUG','SEP','OCT','NOV','DEC']
+  const months = ['JAN' ,'FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
   return (
     <>
      <div className="month-list container">
@@ -13,5 +13,5 @@ const MonthFilter = ({handleFilter}) => {
     </>
   )
 }
-
+React.memo(MonthFilter);
 export default MonthFilter ;
