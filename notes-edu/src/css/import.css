@@ -22,7 +22,7 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 5px;
-    /* border: 1px solid blue; */
+    border: 1px solid black;
     padding-inline: .3rem;
     margin-inline: .3rem;
     user-select: none;
@@ -34,6 +34,7 @@
 }
 .json-container input[type="file" i] {
     font-family: 'Playfair Display';
+    width:80%;
 }
 
 .json-container input[type="file"]::file-selector-button {
